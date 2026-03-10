@@ -33,45 +33,49 @@ export default function OrdersPage() {
   }, [tab])
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-foreground">My Orders</h1>
+    <main className="min-h-screen bg-[#0f0f14] px-4 py-12">
+      <div className="mx-auto max-w-3xl">
+        <h1 className="text-2xl font-normal text-white">
+          Your <span className="font-serif italic">Orders</span>
+        </h1>
 
-      <div className="mt-6 flex gap-1 rounded-lg bg-muted p-1">
-        {(['buying', 'selling'] as const).map((t) => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            className={cn(
-              'flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors',
-              tab === t
-                ? 'bg-card text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground',
-            )}
-          >
-            {t === 'buying' ? 'Buying' : 'Selling'}
-          </button>
-        ))}
-      </div>
+        <div className="mt-8 flex gap-4 border-b border-white/10">
+          {(['buying', 'selling'] as const).map((t) => (
+            <button
+              key={t}
+              onClick={() => setTab(t)}
+              className={cn(
+                'pb-3 text-sm font-medium transition-colors',
+                tab === t
+                  ? 'border-b-2 border-white text-white'
+                  : 'text-white/30 hover:text-white/50',
+              )}
+            >
+              {t === 'buying' ? 'Buying' : 'Selling'}
+            </button>
+          ))}
+        </div>
 
-      <div className="mt-6 space-y-3">
-        {loading ? (
-          <div className="py-12 text-center text-sm text-muted-foreground">
-            Loading orders...
-          </div>
-        ) : orders.length === 0 ? (
-          <div className="py-12 text-center text-sm text-muted-foreground">
-            No orders yet
-          </div>
-        ) : (
-          userId &&
-          orders.map((order) => (
-            <OrderCard
-              key={order.id}
-              order={order}
-              currentUserId={userId}
-            />
-          ))
-        )}
+        <div className="mt-6 space-y-3">
+          {loading ? (
+            <div className="py-12 text-center text-sm text-white/30">
+              Loading orders...
+            </div>
+          ) : orders.length === 0 ? (
+            <div className="py-12 text-center text-sm text-white/30">
+              No orders yet
+            </div>
+          ) : (
+            userId &&
+            orders.map((order) => (
+              <OrderCard
+                key={order.id}
+                order={order}
+                currentUserId={userId}
+              />
+            ))
+          )}
+        </div>
       </div>
     </main>
   )

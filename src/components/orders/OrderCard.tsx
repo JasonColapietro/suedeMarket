@@ -4,12 +4,12 @@ import { ORDER_STATUS_LABELS } from '@/lib/constants'
 import type { Order } from '@/lib/types'
 
 const statusColors: Record<string, string> = {
-  pending: 'bg-yellow-100 text-yellow-800',
-  confirmed: 'bg-blue-100 text-blue-800',
-  shipped: 'bg-purple-100 text-purple-800',
-  delivered: 'bg-green-100 text-green-800',
-  completed: 'bg-green-200 text-green-900',
-  cancelled: 'bg-red-100 text-red-800',
+  pending: 'bg-yellow-500/15 text-yellow-400',
+  confirmed: 'bg-blue-500/15 text-blue-400',
+  shipped: 'bg-purple-500/15 text-purple-400',
+  delivered: 'bg-emerald-500/15 text-emerald-400',
+  completed: 'bg-emerald-500/20 text-emerald-300',
+  cancelled: 'bg-red-500/15 text-red-400',
 }
 
 interface OrderCardProps {
@@ -24,14 +24,14 @@ export function OrderCard({ order, currentUserId }: OrderCardProps) {
   return (
     <Link
       href={`/orders/${order.id}`}
-      className="block rounded-lg border border-border bg-card p-4 transition-shadow hover:shadow-md"
+      className="block rounded-sm border border-white/8 bg-[#1a1a22] p-4 transition-colors hover:bg-[#1a1a22]/80"
     >
       <div className="flex items-start justify-between">
         <div className="min-w-0 flex-1">
-          <h3 className="truncate font-medium text-card-foreground">
+          <h3 className="truncate font-medium text-white/80">
             {order.listing?.title ?? 'Unknown listing'}
           </h3>
-          <p className="mt-1 text-lg font-semibold text-foreground">
+          <p className="mt-1 text-lg font-semibold text-white">
             {formatCents(order.total_cents)}
           </p>
         </div>
@@ -45,7 +45,7 @@ export function OrderCard({ order, currentUserId }: OrderCardProps) {
         </span>
       </div>
 
-      <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
+      <div className="mt-3 flex items-center justify-between text-xs text-white/30">
         <span>
           {isBuyer ? 'Seller' : 'Buyer'}:{' '}
           {counterparty?.display_name ?? 'Unknown'}

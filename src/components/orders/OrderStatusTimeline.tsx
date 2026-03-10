@@ -7,7 +7,7 @@ const STEPS: OrderStatus[] = ['pending', 'confirmed', 'shipped', 'delivered', 'c
 export function OrderStatusTimeline({ status }: { status: OrderStatus }) {
   if (status === 'cancelled') {
     return (
-      <div className="flex items-center gap-2 rounded-md bg-destructive/10 px-3 py-2 text-sm font-medium text-destructive">
+      <div className="flex items-center gap-2 rounded-sm bg-red-500/15 px-3 py-2 text-sm font-medium text-red-400">
         Order Cancelled
       </div>
     )
@@ -28,9 +28,9 @@ export function OrderStatusTimeline({ status }: { status: OrderStatus }) {
               <div
                 className={cn(
                   'flex h-8 w-8 items-center justify-center rounded-full text-xs font-medium transition-colors',
-                  isPast && 'bg-green-500 text-white',
-                  isCurrent && 'bg-accent text-accent-foreground ring-2 ring-accent/30',
-                  isFuture && 'bg-muted text-muted-foreground',
+                  isPast && 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30',
+                  isCurrent && 'bg-accent/20 text-accent border border-accent/30',
+                  isFuture && 'bg-white/5 text-white/20 border border-white/10',
                 )}
               >
                 {isPast ? (
@@ -44,7 +44,9 @@ export function OrderStatusTimeline({ status }: { status: OrderStatus }) {
               <span
                 className={cn(
                   'mt-1 text-xs whitespace-nowrap',
-                  isCurrent ? 'font-medium text-foreground' : 'text-muted-foreground',
+                  isPast && 'text-emerald-400/60',
+                  isCurrent && 'font-medium text-accent',
+                  isFuture && 'text-white/20',
                 )}
               >
                 {ORDER_STATUS_LABELS[step]}
@@ -54,7 +56,7 @@ export function OrderStatusTimeline({ status }: { status: OrderStatus }) {
               <div
                 className={cn(
                   'mx-1 h-0.5 w-8 sm:w-12',
-                  i < currentIndex ? 'bg-green-500' : 'bg-muted',
+                  i < currentIndex ? 'bg-emerald-500/30' : 'bg-white/10',
                 )}
               />
             )}

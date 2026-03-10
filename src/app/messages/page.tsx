@@ -14,13 +14,17 @@ export default async function MessagesPage() {
   const conversations = await getConversations(supabase, user.id)
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-foreground">Messages</h1>
-      <div className="overflow-hidden rounded-lg border border-border bg-card">
-        <ConversationList
-          conversations={conversations}
-          currentUserId={user.id}
-        />
+    <div className="min-h-screen bg-[#0f0f14] px-4 py-12">
+      <div className="mx-auto max-w-2xl">
+        <h1 className="mb-8 text-2xl font-normal text-white">
+          Your <span className="font-serif italic">Messages</span>
+        </h1>
+        <div className="overflow-hidden rounded-sm border border-white/10 bg-[#1a1a22]">
+          <ConversationList
+            conversations={conversations}
+            currentUserId={user.id}
+          />
+        </div>
       </div>
     </div>
   )

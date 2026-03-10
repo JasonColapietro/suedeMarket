@@ -65,85 +65,97 @@ export default function SettingsPage() {
 
   if (!profile) {
     return (
-      <div className="flex min-h-[50vh] items-center justify-center">
-        <p className="text-muted-foreground">Loading...</p>
+      <div className="flex min-h-screen items-center justify-center bg-[#0f0f14]">
+        <p className="text-white/50">Loading...</p>
       </div>
     )
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-foreground">Settings</h1>
+    <div className="min-h-screen bg-[#0f0f14] px-4 py-16">
+      <div className="mx-auto max-w-2xl">
+        <p className="text-[12px] font-medium uppercase tracking-[0.35em] text-white/30">
+          Account
+        </p>
+        <h1 className="mt-2 text-3xl font-normal text-white">
+          <span className="font-serif italic">Settings</span>
+        </h1>
 
-      {/* Profile form */}
-      <form onSubmit={handleSave} className="space-y-4 rounded-lg border border-border bg-card p-6">
-        <h2 className="flex items-center gap-2 text-lg font-semibold text-foreground">
-          <User className="h-5 w-5" />
-          Profile
-        </h2>
-
-        {error && (
-          <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-        )}
-        {saved && (
-          <div className="rounded-md bg-green-50 p-3 text-sm text-green-700">
-            Profile saved successfully.
-          </div>
-        )}
-
-        <div>
-          <label htmlFor="displayName" className="block text-sm font-medium">
-            Display Name
-          </label>
-          <input
-            id="displayName"
-            type="text"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-            className="mt-1 block w-full rounded-md border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="bio" className="block text-sm font-medium">
-            Bio
-          </label>
-          <textarea
-            id="bio"
-            rows={3}
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            className="mt-1 block w-full rounded-md border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="avatarUrl" className="block text-sm font-medium">
-            Avatar URL
-          </label>
-          <input
-            id="avatarUrl"
-            type="url"
-            value={avatarUrl}
-            onChange={(e) => setAvatarUrl(e.target.value)}
-            placeholder="https://..."
-            className="mt-1 block w-full rounded-md border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-          />
-        </div>
-
-        <button
-          type="submit"
-          disabled={saving}
-          className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50"
+        {/* Profile form */}
+        <form
+          onSubmit={handleSave}
+          className="mt-10 space-y-5 rounded-sm border border-white/[0.08] bg-[#1a1a22] p-6"
         >
-          <Save className="h-4 w-4" />
-          {saving ? 'Saving...' : 'Save Profile'}
-        </button>
-      </form>
+          <h2 className="flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.35em] text-white/50">
+            <User className="h-4 w-4" />
+            Profile
+          </h2>
 
-      {/* API Keys */}
-      <div className="mt-8 rounded-lg border border-border bg-card p-6">
-        <ApiKeyManager />
+          {error && (
+            <div className="rounded-sm border border-red-500/20 bg-red-500/10 p-3 text-sm text-red-400">
+              {error}
+            </div>
+          )}
+          {saved && (
+            <div className="rounded-sm border border-accent/20 bg-accent/10 p-3 text-sm text-accent">
+              Profile saved successfully.
+            </div>
+          )}
+
+          <div>
+            <label htmlFor="displayName" className="block text-[11px] uppercase tracking-[0.3em] text-white/30">
+              Display Name
+            </label>
+            <input
+              id="displayName"
+              type="text"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+              className="mt-2 block w-full rounded-sm border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="bio" className="block text-[11px] uppercase tracking-[0.3em] text-white/30">
+              Bio
+            </label>
+            <textarea
+              id="bio"
+              rows={3}
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+              className="mt-2 block w-full rounded-sm border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="avatarUrl" className="block text-[11px] uppercase tracking-[0.3em] text-white/30">
+              Avatar URL
+            </label>
+            <input
+              id="avatarUrl"
+              type="url"
+              value={avatarUrl}
+              onChange={(e) => setAvatarUrl(e.target.value)}
+              placeholder="https://..."
+              className="mt-2 block w-full rounded-sm border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={saving}
+            className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
+          >
+            <Save className="h-4 w-4" />
+            {saving ? 'Saving...' : 'Save Profile'}
+          </button>
+        </form>
+
+        {/* API Keys */}
+        <div className="mt-8 rounded-sm border border-white/[0.08] bg-[#1a1a22] p-6">
+          <ApiKeyManager />
+        </div>
       </div>
     </div>
   )

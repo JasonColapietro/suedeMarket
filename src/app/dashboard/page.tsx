@@ -54,79 +54,90 @@ export default async function DashboardPage() {
       label: 'Active Listings',
       value: listingCount ?? 0,
       icon: Package,
-      color: 'text-blue-600 bg-blue-50',
     },
     {
       label: 'Pending Offers',
       value: offerCount ?? 0,
       icon: HandCoins,
-      color: 'text-amber-600 bg-amber-50',
     },
     {
       label: 'Total Orders',
       value: orderCount ?? 0,
       icon: ShoppingCart,
-      color: 'text-green-600 bg-green-50',
     },
     {
       label: 'Avg Rating',
       value: profile?.reputation_score?.toFixed(1) ?? '0.0',
       icon: Star,
-      color: 'text-purple-600 bg-purple-50',
       sub: `${profile?.total_reviews ?? 0} reviews`,
     },
   ]
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-foreground">Dashboard</h1>
+    <div className="min-h-screen bg-[#0f0f14] px-4 py-16">
+      <div className="mx-auto max-w-5xl">
+        <p className="text-[12px] font-medium uppercase tracking-[0.35em] text-white/30">
+          Seller
+        </p>
+        <h1 className="mt-2 text-3xl font-normal text-white">
+          <span className="font-serif italic">Dashboard</span>
+        </h1>
 
-      {/* Stats grid */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-lg border border-border bg-card p-4"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{stat.label}</span>
-              <div className={`rounded-md p-2 ${stat.color}`}>
-                <stat.icon className="h-4 w-4" />
+        {/* Stats grid */}
+        <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-sm border border-white/[0.08] bg-[#1a1a22] p-6"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.3em] text-white/30">
+                  {stat.label}
+                </span>
+                <stat.icon className="h-4 w-4 text-white/20" />
               </div>
+              <p className="mt-3 text-[clamp(2rem,4vw,3rem)] font-light text-white">
+                {stat.value}
+              </p>
+              {stat.sub && (
+                <p className="mt-1 text-[11px] uppercase tracking-[0.3em] text-white/30">
+                  {stat.sub}
+                </p>
+              )}
             </div>
-            <p className="mt-2 text-2xl font-bold text-foreground">{stat.value}</p>
-            {stat.sub && (
-              <p className="text-xs text-muted-foreground">{stat.sub}</p>
+          ))}
+        </div>
+
+        {/* Recent activity */}
+        <section className="mt-12">
+          <h2 className="text-lg font-normal text-white">
+            Recent <span className="font-serif italic">Activity</span>
+          </h2>
+          <div className="mt-4">
+            {recentOrders && recentOrders.length > 0 ? (
+              <div className="divide-y divide-white/[0.08] rounded-sm border border-white/[0.08] bg-[#1a1a22]">
+                {recentOrders.map((order: any) => (
+                  <div key={order.id} className="flex items-center justify-between px-5 py-4">
+                    <div>
+                      <p className="text-sm font-medium text-white/80">
+                        {order.listing?.title ?? 'Unknown listing'}
+                      </p>
+                      <p className="mt-0.5 text-[11px] uppercase tracking-[0.3em] text-white/30">
+                        {order.status} &middot; {timeAgo(order.created_at)}
+                      </p>
+                    </div>
+                    <span className="text-sm font-medium text-white">
+                      {formatCents(order.amount_cents)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-white/50">No recent activity.</p>
             )}
           </div>
-        ))}
+        </section>
       </div>
-
-      {/* Recent activity */}
-      <section className="mt-8">
-        <h2 className="mb-4 text-lg font-semibold text-foreground">Recent Activity</h2>
-        {recentOrders && recentOrders.length > 0 ? (
-          <div className="divide-y divide-border rounded-lg border border-border bg-card">
-            {recentOrders.map((order: any) => (
-              <div key={order.id} className="flex items-center justify-between px-4 py-3">
-                <div>
-                  <p className="text-sm font-medium text-foreground">
-                    {order.listing?.title ?? 'Unknown listing'}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {order.status} · {timeAgo(order.created_at)}
-                  </p>
-                </div>
-                <span className="text-sm font-medium text-foreground">
-                  {formatCents(order.amount_cents)}
-                </span>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-sm text-muted-foreground">No recent activity.</p>
-        )}
-      </section>
     </div>
   )
 }

@@ -24,8 +24,8 @@ export default function NewListingPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-[50vh] items-center justify-center">
-        <p className="text-sm text-muted-foreground">Loading...</p>
+      <div className="flex min-h-[50vh] items-center justify-center bg-[#0f0f14]">
+        <p className="text-sm text-white/40">Loading...</p>
       </div>
     )
   }
@@ -33,9 +33,16 @@ export default function NewListingPage() {
   if (!authenticated) return null
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-foreground">Create Listing</h1>
-      <ListingForm />
+    <div className="min-h-screen bg-[#0f0f14]">
+      <div className="mx-auto max-w-2xl px-4 py-12">
+        <p className="text-[12px] font-medium tracking-[0.35em] uppercase text-white/30">
+          New listing
+        </p>
+        <h1 className="mt-2 mb-8 text-3xl font-normal text-white">
+          List an <span className="font-serif italic">Instrument</span>
+        </h1>
+        <ListingForm />
+      </div>
     </div>
   )
 }

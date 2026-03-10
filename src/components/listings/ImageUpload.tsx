@@ -51,12 +51,12 @@ export function ImageUpload({
     <div className="space-y-3">
       <div className="flex flex-wrap gap-3">
         {images.map((url, i) => (
-          <div key={i} className="group relative h-24 w-24 overflow-hidden rounded-lg border border-border">
+          <div key={i} className="group relative h-24 w-24 overflow-hidden rounded-sm border border-white/10">
             <img src={url} alt="" className="h-full w-full object-cover" />
             <button
               type="button"
               onClick={() => removeImage(i)}
-              className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100"
+              className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity group-hover:opacity-100"
             >
               <svg className="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -69,7 +69,7 @@ export function ImageUpload({
           onClick={() => inputRef.current?.click()}
           disabled={uploading}
           className={cn(
-            'flex h-24 w-24 flex-col items-center justify-center rounded-lg border-2 border-dashed border-border text-muted-foreground transition-colors hover:border-accent hover:text-accent',
+            'flex h-24 w-24 flex-col items-center justify-center rounded-sm border-2 border-dashed border-white/15 text-white/30 transition-colors hover:border-white/30 hover:text-white/50',
             uploading && 'cursor-not-allowed opacity-50',
           )}
         >

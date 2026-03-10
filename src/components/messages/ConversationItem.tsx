@@ -28,12 +28,12 @@ export function ConversationItem({
     <Link
       href={`/messages/${conversation.id}`}
       className={cn(
-        'flex items-center gap-3 border-b border-border px-4 py-3 transition-colors hover:bg-accent/50',
-        active && 'bg-accent/50',
+        'flex items-center gap-3 border-b border-white/8 px-4 py-3 transition-colors hover:bg-white/5',
+        active && 'bg-white/5',
       )}
     >
       {/* Avatar / listing thumbnail */}
-      <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-muted">
+      <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-white/10">
         {listingImage ? (
           <img
             src={listingImage}
@@ -41,7 +41,7 @@ export function ConversationItem({
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-xs font-medium text-muted-foreground">
+          <div className="flex h-full w-full items-center justify-center text-xs font-medium text-white/50">
             {otherName[0]?.toUpperCase() ?? '?'}
           </div>
         )}
@@ -50,18 +50,18 @@ export function ConversationItem({
       {/* Content */}
       <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between">
-          <span className="truncate text-sm font-medium text-foreground">
+          <span className="truncate text-sm font-medium text-white/80">
             {otherName}
           </span>
           {lastMsg && (
-            <span className="shrink-0 text-[10px] text-muted-foreground">
+            <span className="shrink-0 text-[10px] text-white/20">
               {timeAgo(lastMsg.created_at)}
             </span>
           )}
         </div>
-        <p className="truncate text-xs text-muted-foreground">{listingTitle}</p>
+        <p className="truncate text-xs text-white/30">{listingTitle}</p>
         {lastMsg && (
-          <p className="mt-0.5 truncate text-xs text-muted-foreground">
+          <p className="mt-0.5 truncate text-xs text-white/30">
             {lastMsg.message_type === 'offer'
               ? 'Sent an offer'
               : lastMsg.content}

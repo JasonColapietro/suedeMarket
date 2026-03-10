@@ -79,10 +79,10 @@ export function MessageThread({
   }
 
   return (
-    <div className="flex flex-1 flex-col overflow-hidden">
+    <div className="flex flex-1 flex-col overflow-hidden bg-[#0f0f14]">
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {messages.length === 0 && (
-          <p className="py-12 text-center text-sm text-muted-foreground">
+          <p className="py-12 text-center text-sm text-white/30">
             No messages yet. Start the conversation!
           </p>
         )}

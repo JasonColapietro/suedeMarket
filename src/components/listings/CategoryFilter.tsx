@@ -30,14 +30,14 @@ export function CategoryFilter({
 
   return (
     <div className="space-y-1">
-      <h3 className="mb-2 text-sm font-semibold text-foreground">Categories</h3>
+      <h3 className="mb-3 text-[12px] font-medium tracking-[0.15em] uppercase text-white/30">Categories</h3>
       <button
         onClick={() => selectCategory(null)}
         className={cn(
-          'block w-full rounded-md px-3 py-1.5 text-left text-sm transition-colors',
+          'block w-full rounded-sm px-3 py-1.5 text-left text-sm transition-colors',
           !activeCategoryId
-            ? 'bg-primary text-primary-foreground'
-            : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+            ? 'bg-white/10 text-white'
+            : 'text-white/40 hover:text-white/70',
         )}
       >
         All Categories
@@ -47,10 +47,10 @@ export function CategoryFilter({
           <button
             onClick={() => selectCategory(cat.id)}
             className={cn(
-              'block w-full rounded-md px-3 py-1.5 text-left text-sm font-medium transition-colors',
+              'block w-full rounded-sm px-3 py-1.5 text-left text-sm font-medium transition-colors',
               activeCategoryId === cat.id
-                ? 'bg-primary text-primary-foreground'
-                : 'text-foreground hover:bg-muted',
+                ? 'bg-white/10 text-white'
+                : 'text-white/60 hover:text-white/80',
             )}
           >
             {cat.icon && <span className="mr-1.5">{cat.icon}</span>}
@@ -61,10 +61,10 @@ export function CategoryFilter({
               key={child.id}
               onClick={() => selectCategory(child.id)}
               className={cn(
-                'block w-full rounded-md py-1.5 pl-7 pr-3 text-left text-sm transition-colors',
+                'block w-full rounded-sm py-1.5 pl-7 pr-3 text-left text-sm transition-colors',
                 activeCategoryId === child.id
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+                  ? 'bg-white/10 text-white'
+                  : 'text-white/40 hover:text-white/70',
               )}
             >
               {child.name}

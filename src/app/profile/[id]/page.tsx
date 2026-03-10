@@ -30,85 +30,89 @@ export default async function ProfilePage({
   const isAgent = profile.participant_type === 'agent'
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
-      {/* Profile header */}
-      <div className="rounded-lg border border-border bg-card p-6">
-        <ProfileCard profile={profile} />
-        {(profile.bio || profile.agent_description) && (
-          <p className="mt-4 text-sm text-muted-foreground">
-            {isAgent ? profile.agent_description : profile.bio}
+    <div className="min-h-screen bg-[#f8f7f5] px-4 py-16">
+      <div className="mx-auto max-w-5xl">
+        {/* Profile header */}
+        <div className="rounded-sm border border-primary/10 bg-white p-8">
+          <ProfileCard profile={profile} variant="light" />
+          {(profile.bio || profile.agent_description) && (
+            <p className="mt-5 text-sm leading-relaxed text-primary/60">
+              {isAgent ? profile.agent_description : profile.bio}
+            </p>
+          )}
+          <p className="mt-3 text-[11px] uppercase tracking-[0.3em] text-primary/30">
+            Member since {new Date(profile.created_at).toLocaleDateString()}
           </p>
-        )}
-        <p className="mt-2 text-xs text-muted-foreground">
-          Member since {new Date(profile.created_at).toLocaleDateString()}
-        </p>
-      </div>
+        </div>
 
-      {/* Active listings */}
-      <section className="mt-8">
-        <h3 className="mb-4 text-lg font-semibold text-foreground">
-          Active Listings ({listings.length})
-        </h3>
-        {listings.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {listings.map((listing) => (
-              <ListingCard key={listing.id} listing={listing} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-sm text-muted-foreground">No active listings.</p>
-        )}
-      </section>
+        {/* Active listings */}
+        <section className="mt-12">
+          <h3 className="text-lg font-normal text-primary">
+            Active <span className="font-serif italic">Listings</span>
+            <span className="ml-2 text-sm text-primary/30">({listings.length})</span>
+          </h3>
+          {listings.length > 0 ? (
+            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {listings.map((listing) => (
+                <ListingCard key={listing.id} listing={listing} />
+              ))}
+            </div>
+          ) : (
+            <p className="mt-4 text-sm text-primary/50">No active listings.</p>
+          )}
+        </section>
 
-      {/* Reviews */}
-      <section className="mt-8">
-        <h3 className="mb-4 text-lg font-semibold text-foreground">
-          Reviews ({reviews.length})
-        </h3>
-        {reviews.length > 0 ? (
-          <div className="space-y-4">
-            {reviews.map((review) => (
-              <div
-                key={review.id}
-                className="rounded-lg border border-border bg-card p-4"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-0.5">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-4 w-4 ${
-                            i < review.rating
-                              ? 'fill-accent text-accent'
-                              : 'text-border'
-                          }`}
-                        />
-                      ))}
+        {/* Reviews */}
+        <section className="mt-12">
+          <h3 className="text-lg font-normal text-primary">
+            <span className="font-serif italic">Reviews</span>
+            <span className="ml-2 text-sm text-primary/30">({reviews.length})</span>
+          </h3>
+          {reviews.length > 0 ? (
+            <div className="mt-4 space-y-4">
+              {reviews.map((review) => (
+                <div
+                  key={review.id}
+                  className="rounded-sm border border-primary/10 bg-white p-5"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-0.5">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-4 w-4 ${
+                              i < review.rating
+                                ? 'fill-accent text-accent'
+                                : 'text-primary/15'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      {review.title && (
+                        <span className="text-sm font-medium text-primary">
+                          {review.title}
+                        </span>
+                      )}
                     </div>
-                    {review.title && (
-                      <span className="text-sm font-medium text-foreground">
-                        {review.title}
-                      </span>
-                    )}
+                    <span className="text-[11px] uppercase tracking-[0.3em] text-primary/30">
+                      {timeAgo(review.created_at)}
+                    </span>
                   </div>
-                  <span className="text-xs text-muted-foreground">
-                    {timeAgo(review.created_at)}
-                  </span>
+                  {review.body && (
+                    <p className="mt-3 text-sm leading-relaxed text-primary/60">{review.body}</p>
+                  )}
+                  <p className="mt-3 text-[11px] uppercase tracking-[0.3em] text-primary/30">
+                    by {review.reviewer?.display_name ?? 'Anonymous'}
+                  </p>
                 </div>
-                {review.body && (
-                  <p className="mt-2 text-sm text-muted-foreground">{review.body}</p>
-                )}
-                <p className="mt-2 text-xs text-muted-foreground">
-                  by {review.reviewer?.display_name ?? 'Anonymous'}
-                </p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-sm text-muted-foreground">No reviews yet.</p>
-        )}
-      </section>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-4 text-sm text-primary/50">No reviews yet.</p>
+          )}
+        </section>
+      </div>
     </div>
   )
 }

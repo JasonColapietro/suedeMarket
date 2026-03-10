@@ -86,18 +86,18 @@ export function OrderActions({
             onClick={() => handleAction(action.status)}
             disabled={loading}
             className={cn(
-              'rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50',
+              'rounded-sm px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50',
               action.variant === 'primary' &&
-                'bg-primary text-primary-foreground hover:bg-primary/90',
+                'border border-white/20 text-white/60 hover:border-white/40 hover:text-white',
               action.variant === 'destructive' &&
-                'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+                'border border-red-500/30 text-red-400/60 hover:border-red-500/50 hover:text-red-400',
             )}
           >
             {loading ? 'Updating...' : action.label}
           </button>
         ))}
       </div>
-      {error && <p className="text-sm text-destructive">{error}</p>}
+      {error && <p className="text-sm text-red-400">{error}</p>}
     </div>
   )
 }

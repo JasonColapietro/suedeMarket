@@ -7,11 +7,11 @@ export const CONDITION_LABELS: Record<string, string> = {
 }
 
 export const CONDITION_COLORS: Record<string, string> = {
-  mint: 'bg-green-100 text-green-800',
-  excellent: 'bg-blue-100 text-blue-800',
-  good: 'bg-yellow-100 text-yellow-800',
-  fair: 'bg-orange-100 text-orange-800',
-  poor: 'bg-red-100 text-red-800',
+  mint: 'bg-emerald-500/15 text-emerald-400',
+  excellent: 'bg-blue-500/15 text-blue-400',
+  good: 'bg-amber-500/15 text-amber-400',
+  fair: 'bg-orange-500/15 text-orange-400',
+  poor: 'bg-red-500/15 text-red-400',
 }
 
 export const ORDER_STATUS_LABELS: Record<string, string> = {

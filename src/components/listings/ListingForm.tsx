@@ -97,13 +97,13 @@ export function ListingForm({ listing }: { listing?: Listing }) {
   }
 
   const inputClass =
-    'w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent'
-  const labelClass = 'block text-sm font-medium text-foreground mb-1'
+    'w-full rounded-sm bg-white/5 border border-white/15 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20'
+  const labelClass = 'block text-sm font-medium text-white/50 mb-1.5'
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && (
-        <div className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+        <div className="rounded-sm bg-red-500/10 border border-red-500/20 px-4 py-3 text-sm text-red-400">
           {error}
         </div>
       )}
@@ -135,7 +135,7 @@ export function ListingForm({ listing }: { listing?: Listing }) {
         <div>
           <label className={labelClass}>Price (USD) *</label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-white/30">
               $
             </span>
             <input
@@ -254,7 +254,7 @@ export function ListingForm({ listing }: { listing?: Listing }) {
           type="submit"
           disabled={submitting}
           className={cn(
-            'rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90',
+            'rounded-sm bg-white px-6 py-2.5 text-sm font-medium text-[#0f0f14] transition-opacity hover:opacity-90',
             submitting && 'cursor-not-allowed opacity-50',
           )}
         >
@@ -267,7 +267,7 @@ export function ListingForm({ listing }: { listing?: Listing }) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="rounded-lg border border-border px-6 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          className="rounded-sm border border-white/20 px-6 py-2.5 text-sm font-medium text-white/60 transition-colors hover:border-white/40 hover:text-white"
         >
           Cancel
         </button>

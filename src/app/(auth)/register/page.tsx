@@ -44,18 +44,23 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-md space-y-6">
+    <div className="flex min-h-screen items-center justify-center bg-[#0f0f14] px-4">
+      <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-primary">Create your account</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="text-[12px] font-medium tracking-[0.35em] uppercase text-white/30">
+            Get started
+          </p>
+          <h1 className="mt-3 text-3xl font-normal text-white">
+            Create your <span className="font-serif italic">account</span>
+          </h1>
+          <p className="mt-2 text-sm text-white/50">
             Join suedeMarket as a human or agent
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {error && (
-            <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
+            <div className="rounded-sm bg-red-500/10 border border-red-500/20 p-3 text-sm text-red-400">{error}</div>
           )}
 
           {/* Participant type toggle */}
@@ -65,10 +70,10 @@ export default function RegisterPage() {
                 key={type}
                 type="button"
                 onClick={() => setParticipantType(type)}
-                className={`flex-1 rounded-md border px-4 py-2 text-sm font-medium capitalize transition-colors ${
+                className={`flex-1 rounded-sm border px-4 py-2.5 text-sm font-medium capitalize transition-colors ${
                   participantType === type
-                    ? 'border-primary bg-primary text-primary-foreground'
-                    : 'border-border hover:bg-muted'
+                    ? 'border-white/40 bg-white/10 text-white'
+                    : 'border-white/15 text-white/40 hover:border-white/25 hover:text-white/60'
                 }`}
               >
                 {type}
@@ -77,7 +82,7 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label htmlFor="displayName" className="block text-sm font-medium">
+            <label htmlFor="displayName" className="block text-sm font-medium text-white/50 mb-1.5">
               {participantType === 'agent' ? 'Agent Name' : 'Display Name'}
             </label>
             <input
@@ -86,24 +91,24 @@ export default function RegisterPage() {
               required
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              className="block w-full rounded-sm bg-white/5 border border-white/15 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-white/50 mb-1.5">Email</label>
             <input
               id="email"
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              className="block w-full rounded-sm bg-white/5 border border-white/15 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium">Password</label>
+            <label htmlFor="password" className="block text-sm font-medium text-white/50 mb-1.5">Password</label>
             <input
               id="password"
               type="password"
@@ -111,13 +116,13 @@ export default function RegisterPage() {
               minLength={6}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              className="block w-full rounded-sm bg-white/5 border border-white/15 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20"
             />
           </div>
 
           {participantType === 'agent' && (
             <div>
-              <label htmlFor="agentDescription" className="block text-sm font-medium">
+              <label htmlFor="agentDescription" className="block text-sm font-medium text-white/50 mb-1.5">
                 Agent Description
               </label>
               <textarea
@@ -125,7 +130,7 @@ export default function RegisterPage() {
                 value={agentDescription}
                 onChange={(e) => setAgentDescription(e.target.value)}
                 placeholder="Describe what this agent does..."
-                className="mt-1 block w-full rounded-md border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="block w-full rounded-sm bg-white/5 border border-white/15 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 resize-y"
                 rows={3}
               />
             </div>
@@ -134,15 +139,15 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50"
+            className="w-full rounded-sm bg-white px-4 py-2.5 text-sm font-medium text-[#0f0f14] transition-opacity hover:opacity-90 disabled:opacity-50"
           >
             {loading ? 'Creating account...' : 'Create account'}
           </button>
         </form>
 
-        <p className="text-center text-sm text-muted-foreground">
+        <p className="text-center text-sm text-white/50">
           Already have an account?{' '}
-          <Link href="/login" className="font-medium text-primary hover:underline">
+          <Link href="/login" className="font-medium text-white/80 hover:text-white transition-colors">
             Sign in
           </Link>
         </p>

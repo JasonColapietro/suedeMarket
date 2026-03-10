@@ -61,31 +61,31 @@ export function ApiKeyManager() {
   }
 
   return (
-    <div className="space-y-4">
-      <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+    <div className="space-y-5">
+      <h3 className="flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.35em] text-white/50">
         <Key className="h-4 w-4" />
         API Keys
       </h3>
 
       {newKey && (
-        <div className="rounded-lg border border-accent bg-accent/10 p-4">
-          <p className="mb-2 text-sm font-medium text-foreground">
+        <div className="rounded-sm border border-accent/20 bg-accent/10 p-4">
+          <p className="mb-2 text-sm font-medium text-white/80">
             Your new API key (shown only once):
           </p>
           <div className="flex items-center gap-2">
-            <code className="flex-1 overflow-x-auto rounded bg-muted px-3 py-2 text-xs font-mono">
+            <code className="flex-1 overflow-x-auto rounded-sm bg-white/5 px-3 py-2 font-mono text-xs text-white">
               {newKey}
             </code>
             <button
               onClick={handleCopy}
-              className="rounded-md border border-border p-2 text-muted-foreground hover:text-foreground"
+              className="rounded-sm border border-white/20 p-2 text-white/60 hover:border-white/40 hover:text-white"
             >
-              {copied ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
+              {copied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4" />}
             </button>
           </div>
           <button
             onClick={() => setNewKey(null)}
-            className="mt-2 text-xs text-muted-foreground hover:text-foreground"
+            className="mt-2 text-[11px] uppercase tracking-[0.3em] text-white/30 hover:text-white/60"
           >
             Dismiss
           </button>
@@ -98,14 +98,12 @@ export function ApiKeyManager() {
           value={label}
           onChange={(e) => setLabel(e.target.value)}
           placeholder="Key label (optional)"
-          className="flex-1 rounded-md border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="flex-1 rounded-sm border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/30 focus:outline-none"
         />
         <button
           onClick={handleGenerate}
           disabled={loading}
-          className={cn(
-            'inline-flex items-center gap-1 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50',
-          )}
+          className="inline-flex items-center gap-1 rounded-sm border border-white/20 px-4 py-2.5 text-sm font-medium text-white/60 hover:border-white/40 hover:text-white disabled:opacity-50"
         >
           <Plus className="h-4 w-4" />
           Generate
@@ -113,26 +111,26 @@ export function ApiKeyManager() {
       </div>
 
       {keys.length > 0 && (
-        <div className="divide-y divide-border rounded-lg border border-border">
+        <div className="divide-y divide-white/[0.08] rounded-sm border border-white/[0.08]">
           {keys.map((key) => (
             <div key={key.id} className="flex items-center justify-between px-4 py-3">
               <div>
-                <p className="text-sm font-mono text-foreground">
-                  {key.key_prefix}...
+                <p className="text-sm text-white/80">
+                  <span className="font-mono">{key.key_prefix}...</span>
                   {key.label && (
-                    <span className="ml-2 font-sans text-muted-foreground">
+                    <span className="ml-2 text-white/50">
                       {key.label}
                     </span>
                   )}
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="mt-0.5 text-[11px] uppercase tracking-[0.3em] text-white/30">
                   Created {timeAgo(key.created_at)}
                   {key.last_used_at && ` · Last used ${timeAgo(key.last_used_at)}`}
                 </p>
               </div>
               <button
                 onClick={() => handleRevoke(key.id)}
-                className="rounded-md p-2 text-muted-foreground hover:bg-red-50 hover:text-destructive"
+                className="rounded-sm border border-red-500/20 p-2 text-red-400 hover:bg-red-500/10"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
@@ -142,7 +140,7 @@ export function ApiKeyManager() {
       )}
 
       {keys.length === 0 && !newKey && (
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-white/50">
           No API keys yet. Generate one to use the MCP API.
         </p>
       )}

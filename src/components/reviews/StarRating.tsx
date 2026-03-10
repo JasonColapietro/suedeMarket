@@ -40,7 +40,7 @@ export function StarRating({
               interactive
                 ? 'cursor-pointer hover:text-accent'
                 : 'cursor-default',
-              filled ? 'text-accent' : 'text-border',
+              filled ? 'text-accent' : 'text-white/15',
             )}
           >
             <svg

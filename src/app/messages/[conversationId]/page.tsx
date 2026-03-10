@@ -37,23 +37,23 @@ export default async function ConversationPage({
   const listing = conversation.listing
 
   return (
-    <div className="mx-auto flex h-[calc(100vh-4rem)] max-w-2xl flex-col">
+    <div className="mx-auto flex h-[calc(100vh-4rem)] max-w-2xl flex-col bg-[#0f0f14]">
       {/* Header */}
-      <div className="flex items-center gap-3 border-b border-border bg-card px-4 py-3">
+      <div className="flex items-center gap-3 border-b border-white/10 bg-[#1a1a22] px-4 py-3">
         <Link
           href="/messages"
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="text-sm text-white/30 hover:text-white/60 transition-colors"
         >
           &larr; Back
         </Link>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-medium text-foreground">
+          <p className="truncate text-sm font-medium text-white/80">
             {otherName}
           </p>
           {listing && (
             <Link
               href={`/listings/${listing.id}`}
-              className="truncate text-xs text-muted-foreground hover:text-primary transition-colors"
+              className="truncate text-xs text-white/30 hover:text-white/50 transition-colors"
             >
               {listing.title}
             </Link>
