@@ -1,5 +1,3 @@
-import { createClient } from '@/lib/supabase/server'
-import { searchListings, getCategories } from '@/lib/services/listings.service'
 import { ListingCard } from '@/components/listings/ListingCard'
 import { SearchBar } from '@/components/listings/SearchBar'
 import { CategoryFilter } from '@/components/listings/CategoryFilter'
@@ -7,6 +5,7 @@ import { CONDITION_LABELS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import type { ListingCondition, SearchListingsParams } from '@/lib/types'
+import { loadListingsPageData } from './load-listings-page-data'
 
 export default async function ListingsPage({
   searchParams,
@@ -14,7 +13,6 @@ export default async function ListingsPage({
   searchParams: Promise<Record<string, string | undefined>>
 }) {
   const params = await searchParams
-  const supabase = await createClient()
 
   const searchArgs: SearchListingsParams = {
     q: params.q,
@@ -27,10 +25,7 @@ export default async function ListingsPage({
     offset: params.offset ? Number(params.offset) : 0,
   }
 
-  const [{ listings, count }, categories] = await Promise.all([
-    searchListings(supabase, searchArgs),
-    getCategories(supabase),
-  ])
+  const { listings, count, categories } = await loadListingsPageData(searchArgs)
 
   const currentSort = searchArgs.sort ?? 'newest'
   const activeCondition = params.condition
