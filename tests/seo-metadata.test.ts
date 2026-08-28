@@ -13,3 +13,9 @@ test('prelaunch marketplace pages stay out of search while links remain crawlabl
     },
   })
 })
+
+test('prelaunch marketplace publishes canonical and social metadata', () => {
+  assert.equal(siteMetadata.alternates?.canonical, '/')
+  assert.deepEqual(siteMetadata.openGraph?.images, ['/opengraph-image'])
+  assert.deepEqual(siteMetadata.twitter?.images, ['/opengraph-image'])
+})

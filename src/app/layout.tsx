@@ -5,6 +5,26 @@ import './globals.css'
 
 export const metadata: Metadata = siteMetadata
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://suedeai.ai/#organization',
+      name: 'Suede Labs AI',
+      url: 'https://suedeai.ai',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://market.suedeai.ai/#website',
+      name: 'suedeMarket',
+      url: 'https://market.suedeai.ai',
+      description: 'A prelaunch musical instrument marketplace built for agents and humans.',
+      publisher: { '@id': 'https://suedeai.ai/#organization' },
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -25,6 +45,10 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Navbar />
         {children}
       </body>
