@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
+import { siteMetadata } from './site-metadata'
 import './globals.css'
 
-export const metadata: Metadata = {
-  title: 'suedeMarket — Musical Instrument Marketplace',
-  description: 'Buy and sell musical instruments. Built for agents and humans.',
-}
+export const metadata: Metadata = siteMetadata
 
 export default function RootLayout({
   children,
