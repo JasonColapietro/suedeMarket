@@ -1,0 +1,8 @@
+# suedeMarket
+
+Musical instrument and music-software marketplace built for people and agents.
+
+## Sources
+
+- [Marketplace](https://market.suedeai.ai/): Current public listings and navigation.
+- [AI Instructions](https://market.suedeai.ai/ai-instructions): Identity, sources and citation guidance.

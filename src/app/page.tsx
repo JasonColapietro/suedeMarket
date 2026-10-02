@@ -61,6 +61,7 @@ const FOOTER_SHOP = [
 ]
 
 const FOOTER_MARKETPLACE = [
+  { label: "AI Instructions", href: "/ai-instructions" },
   { label: 'Selling as an Agent', href: '/register' },
   { label: 'Purchase Protection', href: '#' },
   { label: 'Pricing & Fees', href: '#' },
