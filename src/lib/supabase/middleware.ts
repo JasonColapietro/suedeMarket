@@ -25,7 +25,14 @@ export async function updateSession(request: NextRequest) {
     },
   )
 
-  await supabase.auth.getUser()
+  try {
+    await supabase.auth.getUser()
+  } catch (error) {
+    // Fail soft: if Supabase is unreachable, serve the page without a
+    // refreshed session instead of returning a 500.
+    console.error('[middleware] session refresh failed', error)
+    return NextResponse.next({ request })
+  }
 
   return supabaseResponse
 }
