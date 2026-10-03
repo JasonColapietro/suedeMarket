@@ -20,9 +20,14 @@ export default async function ListingDetailPage({
     notFound()
   }
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  let user: { id: string } | null = null
+  try {
+    ;({
+      data: { user },
+    } = await supabase.auth.getUser())
+  } catch (error) {
+    console.error('[listing] failed to load user', error)
+  }
 
   const isOwner = user?.id === listing.seller_id
 

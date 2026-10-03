@@ -17,6 +17,7 @@ import { createClient } from '@/lib/supabase/server'
 import { searchListings } from '@/lib/services/listings.service'
 import { formatCents } from '@/lib/utils'
 import { FeaturedCarousel } from '@/components/home/FeaturedCarousel'
+import type { Listing } from '@/lib/types'
 
 const HERO_CATEGORIES = [
   { label: 'Guitars', slug: 'guitars' },
@@ -78,8 +79,13 @@ const FOOTER_RESOURCES = [
 ]
 
 export default async function HomePage() {
-  const supabase = await createClient()
-  const { listings } = await searchListings(supabase, { limit: 5, sort: 'newest' })
+  let listings: Listing[] = []
+  try {
+    const supabase = await createClient()
+    ;({ listings } = await searchListings(supabase, { limit: 5, sort: 'newest' }))
+  } catch (error) {
+    console.error('[home] failed to load featured listings', error)
+  }
 
   return (
     <main>

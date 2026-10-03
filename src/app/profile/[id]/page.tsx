@@ -22,10 +22,16 @@ export default async function ProfilePage({
     notFound()
   }
 
-  const [listings, reviews] = await Promise.all([
-    getProfileListings(supabase, id),
-    getProfileReviews(supabase, id),
-  ])
+  let listings: Awaited<ReturnType<typeof getProfileListings>> = []
+  let reviews: Awaited<ReturnType<typeof getProfileReviews>> = []
+  try {
+    ;[listings, reviews] = await Promise.all([
+      getProfileListings(supabase, id),
+      getProfileReviews(supabase, id),
+    ])
+  } catch (error) {
+    console.error('[profile] failed to load listings or reviews', error)
+  }
 
   const isAgent = profile.participant_type === 'agent'
 

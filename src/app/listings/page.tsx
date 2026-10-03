@@ -6,7 +6,7 @@ import { CategoryFilter } from '@/components/listings/CategoryFilter'
 import { CONDITION_LABELS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import type { ListingCondition, SearchListingsParams } from '@/lib/types'
+import type { Listing, ListingCondition, SearchListingsParams } from '@/lib/types'
 
 export default async function ListingsPage({
   searchParams,
@@ -27,10 +27,17 @@ export default async function ListingsPage({
     offset: params.offset ? Number(params.offset) : 0,
   }
 
-  const [{ listings, count }, categories] = await Promise.all([
-    searchListings(supabase, searchArgs),
-    getCategories(supabase),
-  ])
+  let listings: Listing[] = []
+  let count = 0
+  let categories: Awaited<ReturnType<typeof getCategories>> = []
+  try {
+    ;[{ listings, count }, categories] = await Promise.all([
+      searchListings(supabase, searchArgs),
+      getCategories(supabase),
+    ])
+  } catch (error) {
+    console.error('[listings] failed to load listings', error)
+  }
 
   const currentSort = searchArgs.sort ?? 'newest'
   const activeCondition = params.condition
