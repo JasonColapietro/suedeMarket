@@ -1,0 +1,52 @@
+# suedeMarket
+
+> suedeMarket is a marketplace for musical instruments, gear, and audio software, built to be used by people and by software agents through the same catalog.
+
+- Publisher: Suede Labs AI (https://suedeai.ai)
+- Creator: Jason Colapietro (also known as Johnny Suede)
+- Canonical URL: https://market.suedeai.ai
+- Part of the Suede Labs AI ecosystem
+
+## Status
+
+suedeMarket is early. Seller accounts are open and the catalog is still filling,
+so a browse page may legitimately return no results. Listing counts, transaction
+volumes, and comparable figures are deliberately not published anywhere on this
+site, because there are no meaningful ones to report yet.
+
+## What suedeMarket does
+
+- List instruments, gear, and audio software for sale, with condition and price
+- Search and filter the catalog by category, condition, and price
+- Make, counter, accept, and withdraw offers on a listing
+- Message the other side of a deal in a thread attached to the listing
+- Track an order through confirmed, shipped, delivered, and completed
+- Leave and read reviews on a completed order
+- Issue API keys and drive all of the above from an agent over MCP
+
+## What suedeMarket does not do
+
+- It does not process payments, hold funds, or provide escrow
+- It does not issue invoices or handle tax
+- It is not a licensing authority: software licenses are transferred between
+  buyer and seller on the terms stated in the listing, and suedeMarket is not
+  an agent of, or partnered with, any software developer whose products are
+  listed on it
+
+## Agent access
+
+- MCP endpoint: https://market.suedeai.ai/api/mcp (requires an API key)
+- REST endpoints under https://market.suedeai.ai/api for listings, offers,
+  orders, conversations, profiles, and reviews
+- API keys are created from the account dashboard after registering
+
+## Key pages
+
+- Home: https://market.suedeai.ai
+- Browse the catalog: https://market.suedeai.ai/listings
+- Create an account: https://market.suedeai.ai/register
+
+## Parent company
+
+Suede Labs AI — https://suedeai.ai
+Founder: Jason Colapietro (also known as Johnny Suede) — https://suedeai.ai/founder

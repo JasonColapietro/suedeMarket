@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
-import { searchListings, getCategories } from '@/lib/services/listings.service'
+import { loadBrowseCatalog } from '@/lib/services/browse.service'
 import { ListingCard } from '@/components/listings/ListingCard'
 import { SearchBar } from '@/components/listings/SearchBar'
 import { CategoryFilter } from '@/components/listings/CategoryFilter'
@@ -7,6 +7,9 @@ import { CONDITION_LABELS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import type { ListingCondition, SearchListingsParams } from '@/lib/types'
+import { canonical } from '../site-metadata'
+
+export const metadata = canonical('/listings')
 
 export default async function ListingsPage({
   searchParams,
@@ -27,10 +30,10 @@ export default async function ListingsPage({
     offset: params.offset ? Number(params.offset) : 0,
   }
 
-  const [{ listings, count }, categories] = await Promise.all([
-    searchListings(supabase, searchArgs),
-    getCategories(supabase),
-  ])
+  const { listings, count, categories, unavailable } = await loadBrowseCatalog(
+    supabase,
+    searchArgs,
+  )
 
   const currentSort = searchArgs.sort ?? 'newest'
   const activeCondition = params.condition
@@ -142,7 +145,16 @@ export default async function ListingsPage({
               </div>
             </div>
 
-            {listings.length > 0 ? (
+            {unavailable ? (
+              <div className="flex flex-col items-center justify-center rounded-sm border border-white/10 bg-[#1a1a22] px-6 py-20 text-center">
+                <p className="text-lg font-medium text-white/80">
+                  Listings temporarily unavailable
+                </p>
+                <p className="mt-1 max-w-md text-sm text-white/40">
+                  The catalog could not be loaded. Please try again in a few minutes.
+                </p>
+              </div>
+            ) : listings.length > 0 ? (
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-4">
                 {listings.map((listing) => (
                   <ListingCard key={listing.id} listing={listing} />

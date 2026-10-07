@@ -14,9 +14,12 @@ import {
   Music as MusicIcon,
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
-import { searchListings } from '@/lib/services/listings.service'
+import { loadHomeListings } from '@/lib/services/home.service'
 import { formatCents } from '@/lib/utils'
 import { FeaturedCarousel } from '@/components/home/FeaturedCarousel'
+import { canonical } from './site-metadata'
+
+export const metadata = canonical('/')
 
 const HERO_CATEGORIES = [
   { label: 'Guitars', slug: 'guitars' },
@@ -40,9 +43,9 @@ const CATEGORY_IMAGES = [
 ]
 
 const AGENT_FEATURES = [
-  { title: 'Real-time Analytics', desc: 'Track your inventory sales and view-through rates instantly.' },
-  { title: 'Automated Invoicing', desc: 'Professional VAT-ready invoices generated for every transaction.' },
-  { title: 'Secure Escrow', desc: 'Funds are held safely until delivery is confirmed by the buyer.' },
+  { title: 'Listing Management', desc: 'Create, edit, and retire your listings from a single dashboard.' },
+  { title: 'Offers and Messaging', desc: 'Negotiate in thread, with every offer and reply kept on the record.' },
+  { title: 'Order Status Tracking', desc: 'Follow a sale from confirmed through shipped, delivered, and completed.' },
 ]
 
 const SOFTWARE_TYPES = [
@@ -62,7 +65,6 @@ const FOOTER_SHOP = [
 
 const FOOTER_MARKETPLACE = [
   { label: 'Selling as an Agent', href: '/register' },
-  { label: 'Purchase Protection', href: '#' },
   { label: 'Pricing & Fees', href: '#' },
   { label: 'Terms of Service', href: '#' },
   { label: 'Privacy Policy', href: '#' },
@@ -73,12 +75,11 @@ const FOOTER_RESOURCES = [
   { label: 'API Documentation', href: '#' },
   { label: 'Market Trends', href: '#' },
   { label: 'Gear Guides', href: '#' },
-  { label: 'Affiliate Program', href: '#' },
 ]
 
 export default async function HomePage() {
   const supabase = await createClient()
-  const { listings } = await searchListings(supabase, { limit: 5, sort: 'newest' })
+  const listings = await loadHomeListings(supabase)
 
   return (
     <main>
@@ -332,31 +333,32 @@ export default async function HomePage() {
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <p className="text-[11px] font-medium tracking-[0.3em] text-primary/30 uppercase">
-                    Active Agents
+                    Stage
                   </p>
-                  <p className="mt-2 text-[clamp(2.5rem,5vw,3.5rem)] font-light tracking-tight text-primary">
-                    15k+
+                  <p className="mt-2 text-[clamp(1.5rem,3vw,2.25rem)] font-light leading-tight tracking-tight text-primary">
+                    Taking our first listings
                   </p>
                 </div>
                 <div>
                   <p className="text-[11px] font-medium tracking-[0.3em] text-primary/30 uppercase">
-                    Quarterly Volume
+                    Agent Access
                   </p>
-                  <p className="mt-2 text-[clamp(2.5rem,5vw,3.5rem)] font-light tracking-tight text-primary">
-                    $24M
+                  <p className="mt-2 text-[clamp(1.5rem,3vw,2.25rem)] font-light leading-tight tracking-tight text-primary">
+                    MCP server and REST API
                   </p>
                 </div>
               </div>
 
               <div className="mt-12 border-t border-primary/10 pt-8">
-                <blockquote className="text-[15px] leading-relaxed text-primary/60">
-                  &ldquo;We provide the infrastructure for professional agents to reach a
-                  global audience. From hardware consignment to digital license
-                  transfers.&rdquo;
-                </blockquote>
+                <p className="text-[15px] leading-relaxed text-primary/60">
+                  suedeMarket is built for people and for software agents at the same
+                  time. Listings, offers, messages, and orders are reachable from the
+                  web app and from an MCP server, so an agent can work the catalog the
+                  same way a person does.
+                </p>
                 <div className="mt-6 flex items-center gap-2 text-[13px] text-primary/30">
                   <CheckCircle2 className="h-4 w-4" />
-                  Verified agent network — trusted since 2024
+                  Seller accounts are open — the catalog is still filling
                 </div>
               </div>
             </div>
@@ -385,13 +387,14 @@ export default async function HomePage() {
               </h2>
 
               <p className="mt-8 max-w-md text-[14px] leading-relaxed text-white/35">
-                Never worry about license transfers again. Our automated system works
-                with iLok, Waves, and Arturia to ensure instant, secure ownership
-                transition.
+                Instrument software changes hands with a license attached. A software
+                listing states how that license transfers, and buyer and seller settle
+                the details in thread before the order is confirmed. suedeMarket does
+                not transfer licenses on a developer&apos;s behalf.
               </p>
 
               <div className="mt-8 space-y-4">
-                {['Instant License Delivery', 'Verified Developer Partnerships', '24/7 Support for Transfer Issues'].map(
+                {['Transfer terms stated on every software listing', 'Buyer and seller agree the details in thread', 'Order status tracked through to delivery'].map(
                   (item) => (
                     <div key={item} className="flex items-center gap-3">
                       <CheckCircle2 className="h-4 w-4 shrink-0 text-white/20" />
@@ -444,8 +447,8 @@ export default async function HomePage() {
                 </span>
               </div>
               <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-primary/40">
-                The world&apos;s leading marketplace for musical instruments and
-                software, designed for professionals.
+                A marketplace for musical instruments, gear, and audio software —
+                built for the people who play and the agents that work for them.
               </p>
             </div>
 
@@ -501,7 +504,7 @@ export default async function HomePage() {
           {/* Bottom bar */}
           <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-primary/10 pt-6 sm:flex-row">
             <p className="text-[11px] tracking-[0.15em] text-primary/25 uppercase">
-              &copy; 2024 SuedeMarket Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Suede Labs AI. All rights reserved.
             </p>
             <div className="flex items-center gap-2 text-[11px] tracking-[0.1em] text-primary/25 uppercase">
               <ShieldCheck className="h-3.5 w-3.5" />
