@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   Search,
@@ -18,6 +19,10 @@ import { searchListings } from '@/lib/services/listings.service'
 import { formatCents } from '@/lib/utils'
 import { FeaturedCarousel } from '@/components/home/FeaturedCarousel'
 import type { Listing } from '@/lib/types'
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://market.suedeai.ai/' },
+}
 
 const HERO_CATEGORIES = [
   { label: 'Guitars', slug: 'guitars' },

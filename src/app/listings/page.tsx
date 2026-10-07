@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import { searchListings, getCategories } from '@/lib/services/listings.service'
 import { ListingCard } from '@/components/listings/ListingCard'
@@ -7,6 +8,12 @@ import { CONDITION_LABELS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import type { Listing, ListingCondition, SearchListingsParams } from '@/lib/types'
+
+export const metadata: Metadata = {
+  title: 'Browse Musical Instruments | suedeMarket',
+  description: 'Browse musical instruments and music gear on suedeMarket. Search listings and filter by category, condition, and price.',
+  alternates: { canonical: 'https://market.suedeai.ai/listings' },
+}
 
 export default async function ListingsPage({
   searchParams,
