@@ -515,6 +515,13 @@ export default async function HomePage() {
             <p className="text-[11px] tracking-[0.15em] text-primary/25 uppercase">
               &copy; 2024 SuedeMarket Inc. All rights reserved.
             </p>
+            <p className="text-[11px] tracking-[0.1em] text-primary/40">
+              Built by{" "}
+              <a href="https://suedeai.ai/founder" className="underline-offset-2 transition-colors hover:text-primary hover:underline">
+                Jason Colapietro
+              </a>
+              , founder of Suede AI
+            </p>
             <div className="flex items-center gap-2 text-[11px] tracking-[0.1em] text-primary/25 uppercase">
               <ShieldCheck className="h-3.5 w-3.5" />
               SSL Secured
