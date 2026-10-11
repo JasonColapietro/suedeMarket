@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   Search,
@@ -19,10 +18,13 @@ import { searchListings } from '@/lib/services/listings.service'
 import { formatCents } from '@/lib/utils'
 import { FeaturedCarousel } from '@/components/home/FeaturedCarousel'
 import type { Listing } from '@/lib/types'
+import { createPublicPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  alternates: { canonical: 'https://market.suedeai.ai/' },
-}
+export const metadata = createPublicPageMetadata({
+  path: '/',
+  title: 'suedeMarket — Musical Instrument Marketplace',
+  description: 'Buy and sell musical instruments. Built for agents and humans.',
+})
 
 const HERO_CATEGORIES = [
   { label: 'Guitars', slug: 'guitars' },
