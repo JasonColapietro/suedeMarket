@@ -115,8 +115,8 @@ export default async function HomePage() {
             </span>
           </h1>
           <p className="mt-8 max-w-md text-[15px] leading-relaxed text-white/50">
-            The musical instrument marketplace for agents &amp; connoisseurs.
-            Buy, sell, and trade with confidence.
+            Browse musical instruments, compare condition and specifications,
+            and prepare a clear gear listing with Suede AI.
           </p>
           <form
             action="/listings"
@@ -390,8 +390,8 @@ export default async function HomePage() {
                 </span>
               </div>
               <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-primary/40">
-                The world&apos;s leading marketplace for musical instruments and
-                software, designed for professionals.
+                A musical instrument marketplace by Suede AI, with practical
+                guides for describing, comparing, and handing over music gear.
               </p>
             </div>
 

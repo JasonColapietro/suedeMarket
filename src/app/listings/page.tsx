@@ -11,8 +11,8 @@ import { createPublicPageMetadata } from '@/lib/seo'
 
 export const metadata = createPublicPageMetadata({
   path: '/listings',
-  title: 'Browse Musical Instruments | suedeMarket',
-  description: 'Browse musical instruments and music gear on suedeMarket. Search listings and filter by category, condition, and price.',
+  title: 'Browse Musical Instruments & Music Gear | Suede AI',
+  description: 'Browse musical instruments on suedeMarket by Suede AI. Filter by category, condition and price, then compare model details, accessories and seller notes.',
 })
 
 export default async function ListingsPage({
