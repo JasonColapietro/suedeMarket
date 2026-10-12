@@ -3,7 +3,8 @@ import { Navbar } from '@/components/layout/Navbar'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'suedeMarket — Musical Instrument Marketplace',
+  metadataBase: new URL('https://market.suedeai.ai'),
+  title: 'suedeMarket: Musical Instrument Marketplace by Suede AI',
   description: 'Buy and sell musical instruments. Built for agents and humans.',
 }
 

@@ -15,13 +15,14 @@ import { createClient } from '@/lib/supabase/server'
 import { searchListings } from '@/lib/services/listings.service'
 import { FeaturedCarousel } from '@/components/home/FeaturedCarousel'
 import type { Listing } from '@/lib/types'
-import { createPublicPageMetadata } from '@/lib/seo'
+import { createPublicPageMetadata, homeJsonLd, jsonLdScript } from '@/lib/seo'
 
-export const metadata = createPublicPageMetadata({
-  path: '/',
+const PAGE = {
   title: 'Musical Instrument Marketplace & Gear Guides | Suede AI',
   description: 'Browse musical instruments on suedeMarket by Suede AI. Prepare a detailed gear listing and compare condition, compatibility, accessories and handoff terms.',
-})
+}
+
+export const metadata = createPublicPageMetadata({ path: '/', ...PAGE })
 
 const HERO_CATEGORIES = [
   { label: 'Guitars', slug: 'guitars' },
@@ -89,6 +90,7 @@ export default async function HomePage() {
 
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(homeJsonLd(PAGE))} />
       {/* ═══════════════════════════════════════════════════════════════════
           HERO — full viewport, dark cinematic
       ═══════════════════════════════════════════════════════════════════ */}

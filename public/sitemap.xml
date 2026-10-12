@@ -1,1 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://market.suedeai.ai/</loc></url><url><loc>https://market.suedeai.ai/ai-instructions</loc><lastmod>2026-10-01</lastmod></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://market.suedeai.ai/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://market.suedeai.ai/listings</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://market.suedeai.ai/ai-instructions</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+</urlset>

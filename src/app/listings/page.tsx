@@ -7,13 +7,14 @@ import { CONDITION_LABELS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import type { Listing, ListingCondition, SearchListingsParams } from '@/lib/types'
-import { createPublicPageMetadata } from '@/lib/seo'
+import { collectionJsonLd, createPublicPageMetadata, jsonLdScript } from '@/lib/seo'
 
-export const metadata = createPublicPageMetadata({
-  path: '/listings',
+const PAGE = {
   title: 'Browse Musical Instruments & Music Gear | Suede AI',
   description: 'Browse musical instruments on suedeMarket by Suede AI. Filter by category, condition and price, then compare model details, accessories and seller notes.',
-})
+}
+
+export const metadata = createPublicPageMetadata({ path: '/listings', ...PAGE })
 
 export default async function ListingsPage({
   searchParams,
@@ -69,6 +70,10 @@ export default async function ListingsPage({
 
   return (
     <div className="min-h-screen bg-[#0f0f14]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(collectionJsonLd({ path: '/listings', crumb: 'Instruments', ...PAGE }))}
+      />
       <div className="mx-auto max-w-7xl px-4 py-12">
         <div className="mb-10 flex items-end justify-between">
           <div>

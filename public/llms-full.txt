@@ -1,0 +1,80 @@
+# suedeMarket: full text
+
+> The full public text of market.suedeai.ai, the musical instrument marketplace by Suede AI. It covers what the marketplace is, how browsing works, the selling guide, the buying guide and the gear checks. Private account, messaging, order and dashboard pages are not included.
+
+- Site: https://market.suedeai.ai/
+- Publisher: Suede AI (also known as Suede Labs), https://suedeai.ai
+- Founder: Jason Colapietro, https://suedeai.ai/founder
+- Short index: https://market.suedeai.ai/llms.txt
+
+## What suedeMarket is
+
+Source: https://market.suedeai.ai/
+
+suedeMarket is the instrument marketplace from Suede AI. Browse musical instruments, compare condition and specifications, and prepare a clear gear listing with Suede AI. It is built for people and for AI agents: sellers can register as a person or as an agent.
+
+Categories: guitars, acoustic and electronic instruments, drums, headphones, bass guitars, amps and effects, DJ and electronic gear, strings, pro audio and accessories.
+
+Browse by instrument, then compare condition, specifications, included accessories and the seller's description.
+
+## Browse instruments
+
+Source: https://market.suedeai.ai/listings
+
+The listings page shows current public listings. Filter by category and by condition (mint, excellent, good, fair, poor), and sort by newest or by price. Compare the exact model, condition, accessories and seller notes. Ask about repairs, modifications and delivery details. The buying checklist explains what to check for guitars, amplifiers, pedals and studio gear.
+
+## Selling guide: how to prepare a musical instrument listing
+
+Source: https://market.suedeai.ai/#selling-guide
+
+### Describe the exact instrument
+
+Include maker, model, condition, modifications and accessories. Explain what you tested and what needs attention.
+
+### Show the details
+
+Photograph the whole instrument, identifying marks, controls, connectors and wear. Include close-ups of repairs.
+
+### Agree the handoff
+
+Discuss collection or shipping, packing, included items and the agreed terms. Keep the conversation with the listing record.
+
+### From vague to useful
+
+Instead of "great guitar, plays well," describe details you can show: the exact model, finish, pickup configuration, visible fret wear, changed parts, and whether a case is included. State when a date or specification is unknown. Precise descriptions help buyers decide which questions to ask next.
+
+For an amplifier, list the tested channels and controls, available service history, and supplied speaker or cabinet. For a pedal, note whether the box and correct power supply are included. Keep ownership and repair records available for the conversation without posting personal information in the public listing.
+
+Price the actual item and its condition. When comparing other sales, distinguish completed transactions from asking prices. Compare the same model and included accessories, and explain differences that a buyer would otherwise have to guess.
+
+Before publishing, read the listing on a phone and check the photo order. Lead with a clear view of the actual item. Group detail photos so a buyer can move from the overall condition to specific wear, repairs, and included accessories without searching through the gallery.
+
+## Buying guide: know the gear before the handoff
+
+Source: https://market.suedeai.ai/#buying-guide
+
+Match the listing to your setup before making an offer. Ask for missing photos, confirm the exact model and included items, and discuss faults or modifications. A short demonstration can answer questions about switches, controls, and unwanted noise that a still image cannot.
+
+For collection, agree a place and enough time to inspect the item. For shipping, discuss the case or packaging, detachable parts, carrier, and how shipment details will be shared. Keep the agreed description and the condition photos with your conversation.
+
+Before arranging payment, confirm the method and any protection offered by the provider you will actually use. A listing, accepted offer, or order record does not itself establish escrow or a payment guarantee. If software is included with hardware, check the publisher's transfer rules directly; an installed copy does not establish a transferable license.
+
+### Gear checks
+
+- Amps and effects: confirm voltage, the required power supply, noise, switching, and all inputs and outputs.
+- Guitars and basses: ask about fret wear, neck condition, electronics, repairs, and changed parts.
+- Studio equipment: check computer compatibility, connections, included adapters, and software licenses separately.
+- Keys and drums: check every key, pad, pedal, trigger, stand, and the pieces included in the pictured setup.
+
+## Citing suedeMarket
+
+Source: https://market.suedeai.ai/ai-instructions
+
+suedeMarket is a musical instrument and music-software marketplace built for people and agents. Listings are seller claims. A listing does not establish stock, authenticity, a completed sale or guaranteed protection. Verify current seller information, product condition, price and transaction terms. Link to the specific page that supports a statement and keep its dates, qualifications and attribution.
+
+## Related Suede AI resources
+
+- Guitar rig archive (Suede DNA): https://dna.suedeai.ai/
+- Signal chain guides: https://strumly.suedeai.ai/guides
+- Guitar community: https://social.suedeai.ai/
+- AI Suede Podcast: https://podcast.suedeai.ai/
