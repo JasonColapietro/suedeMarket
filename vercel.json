@@ -1,4 +1,9 @@
 {
+  "git": {
+    "deploymentEnabled": {
+      "market-seo-retirement": false
+    }
+  },
   "rewrites": [
     {
       "source": "/ai-instructions",

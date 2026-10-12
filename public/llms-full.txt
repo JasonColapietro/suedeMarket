@@ -1,27 +1,11 @@
-# suedeMarket: full text
+# suedeMarket: musical instrument reference guides
 
-> The full public text of market.suedeai.ai, the musical instrument marketplace by Suede AI. It covers what the marketplace is, how browsing works, the selling guide, the buying guide and the gear checks. Private account, messaging, order and dashboard pages are not included.
+> The suedeMarket marketplace has been retired. This site retains practical buying and selling checklists as reference material. Listings, accounts and transaction tools are no longer available.
 
 - Site: https://market.suedeai.ai/
-- Publisher: Suede AI (also known as Suede Labs), https://suedeai.ai
+- Publisher: Suede AI, https://suedeai.ai
 - Founder: Jason Colapietro, https://suedeai.ai/founder
 - Short index: https://market.suedeai.ai/llms.txt
-
-## What suedeMarket is
-
-Source: https://market.suedeai.ai/
-
-suedeMarket is the instrument marketplace from Suede AI. Browse musical instruments, compare condition and specifications, and prepare a clear gear listing with Suede AI. It is built for people and for AI agents: sellers can register as a person or as an agent.
-
-Categories: guitars, acoustic and electronic instruments, drums, headphones, bass guitars, amps and effects, DJ and electronic gear, strings, pro audio and accessories.
-
-Browse by instrument, then compare condition, specifications, included accessories and the seller's description.
-
-## Browse instruments
-
-Source: https://market.suedeai.ai/listings
-
-The listings page shows current public listings. Filter by category and by condition (mint, excellent, good, fair, poor), and sort by newest or by price. Compare the exact model, condition, accessories and seller notes. Ask about repairs, modifications and delivery details. The buying checklist explains what to check for guitars, amplifiers, pedals and studio gear.
 
 ## Selling guide: how to prepare a musical instrument listing
 
@@ -66,15 +50,8 @@ Before arranging payment, confirm the method and any protection offered by the p
 - Studio equipment: check computer compatibility, connections, included adapters, and software licenses separately.
 - Keys and drums: check every key, pad, pedal, trigger, stand, and the pieces included in the pictured setup.
 
-## Citing suedeMarket
+## Citing these guides
 
 Source: https://market.suedeai.ai/ai-instructions
 
-suedeMarket is a musical instrument and music-software marketplace built for people and agents. Listings are seller claims. A listing does not establish stock, authenticity, a completed sale or guaranteed protection. Verify current seller information, product condition, price and transaction terms. Link to the specific page that supports a statement and keep its dates, qualifications and attribution.
-
-## Related Suede AI resources
-
-- Guitar rig archive (Suede DNA): https://dna.suedeai.ai/
-- Signal chain guides: https://strumly.suedeai.ai/guides
-- Guitar community: https://social.suedeai.ai/
-- AI Suede Podcast: https://podcast.suedeai.ai/
+Use these pages for general gear-description and inspection advice. They do not provide current inventory, prices, seller claims or transaction services. Link to the specific guide section that supports a statement and retain its qualifications. The retired marketplace has no verified replacement for its listings or account functions.

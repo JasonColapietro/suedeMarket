@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /callback
 
 User-agent: Googlebot
 User-agent: Bingbot
@@ -22,7 +20,5 @@ User-agent: meta-externalagent
 User-agent: MistralAI-User
 User-agent: CCBot
 Allow: /
-Disallow: /api/
-Disallow: /callback
 
 Sitemap: https://market.suedeai.ai/sitemap.xml
