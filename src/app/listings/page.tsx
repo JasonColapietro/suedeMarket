@@ -130,6 +130,12 @@ export default async function ListingsPage({
 
           {/* Main content */}
           <main className="min-w-0 flex-1">
+            <p className="mb-6 max-w-3xl text-sm leading-relaxed text-white/75">
+              Compare the exact model, condition, accessories, and seller notes.
+              Ask about repairs, modifications, and delivery details. The{' '}
+              <Link href="/#buying-guide" className="underline underline-offset-4">buying checklist</Link>{' '}
+              explains what to check for guitars, amplifiers, pedals, and studio gear.
+            </p>
             <div className="mb-5 flex items-center justify-between">
               <p className="text-sm text-white/40">
                 {count} {count === 1 ? 'listing' : 'listings'}
