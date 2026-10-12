@@ -4,26 +4,23 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
-  Star,
   Zap,
   Music,
   Monitor,
   Pen,
-  CheckCircle2,
   ShieldCheck,
   Music as MusicIcon,
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
 import { searchListings } from '@/lib/services/listings.service'
-import { formatCents } from '@/lib/utils'
 import { FeaturedCarousel } from '@/components/home/FeaturedCarousel'
 import type { Listing } from '@/lib/types'
 import { createPublicPageMetadata } from '@/lib/seo'
 
 export const metadata = createPublicPageMetadata({
   path: '/',
-  title: 'suedeMarket — Musical Instrument Marketplace',
-  description: 'Buy and sell musical instruments. Built for agents and humans.',
+  title: 'Musical Instrument Marketplace & Gear Guides | Suede AI',
+  description: 'Browse musical instruments on suedeMarket by Suede AI. Prepare a detailed gear listing and compare condition, compatibility, accessories and handoff terms.',
 })
 
 const HERO_CATEGORIES = [
@@ -48,16 +45,16 @@ const CATEGORY_IMAGES = [
 ]
 
 const AGENT_FEATURES = [
-  { title: 'Real-time Analytics', desc: 'Track your inventory sales and view-through rates instantly.' },
-  { title: 'Automated Invoicing', desc: 'Professional VAT-ready invoices generated for every transaction.' },
-  { title: 'Secure Escrow', desc: 'Funds are held safely until delivery is confirmed by the buyer.' },
+  { title: 'Describe the exact instrument', desc: 'Include maker, model, condition, modifications, and accessories. Explain what you tested and what needs attention.' },
+  { title: 'Show the details', desc: 'Photograph the whole instrument, identifying marks, controls, connectors, and wear. Include close-ups of repairs.' },
+  { title: 'Agree the handoff', desc: 'Discuss collection or shipping, packing, included items, and the agreed terms. Keep the conversation with the listing record.' },
 ]
 
-const SOFTWARE_TYPES = [
-  { icon: Zap, name: 'VST3', desc: 'Industry-standard plugin format' },
-  { icon: Music, name: 'Samples', desc: 'Premium sample libraries' },
-  { icon: Monitor, name: 'Presets', desc: 'Curated sound collections' },
-  { icon: Pen, name: 'Audio Units', desc: 'macOS native AU format' },
+const GEAR_CHECKS = [
+  { icon: Zap, name: 'Amps & effects', desc: 'Confirm voltage, the required power supply, noise, switching, and all inputs and outputs.' },
+  { icon: Music, name: 'Guitars & basses', desc: 'Ask about fret wear, neck condition, electronics, repairs, and changed parts.' },
+  { icon: Monitor, name: 'Studio equipment', desc: 'Check computer compatibility, connections, included adapters, and software licenses separately.' },
+  { icon: Pen, name: 'Keys & drums', desc: 'Check every key, pad, pedal, trigger, stand, and the pieces included in the pictured setup.' },
 ]
 
 const FOOTER_SHOP = [
@@ -65,24 +62,20 @@ const FOOTER_SHOP = [
   { label: 'Amps & Effects', href: '/listings?category=amps-effects' },
   { label: 'Drums & Percussion', href: '/listings?category=drums' },
   { label: 'Synths & Keyboards', href: '/listings?category=keyboards' },
-  { label: 'Software & VSTs', href: '/listings' },
+  { label: 'All Instruments', href: '/listings' },
 ]
 
 const FOOTER_MARKETPLACE = [
   { label: "AI Instructions", href: "/ai-instructions" },
   { label: 'Selling as an Agent', href: '/register' },
-  { label: 'Purchase Protection', href: '#' },
-  { label: 'Pricing & Fees', href: '#' },
-  { label: 'Terms of Service', href: '#' },
-  { label: 'Privacy Policy', href: '#' },
+  { label: 'Prepare a Listing', href: '#selling-guide' },
+  { label: 'Buying Checklist', href: '#buying-guide' },
 ]
 
 const FOOTER_RESOURCES = [
-  { label: 'Help Center', href: '#' },
-  { label: 'API Documentation', href: '#' },
-  { label: 'Market Trends', href: '#' },
-  { label: 'Gear Guides', href: '#' },
-  { label: 'Affiliate Program', href: '#' },
+  { label: 'Guitar Rig Archive', href: 'https://dna.suedeai.ai/' },
+  { label: 'Signal Chain Guides', href: 'https://strumly.suedeai.ai/guides' },
+  { label: 'Guitar Community', href: 'https://social.suedeai.ai/' },
 ]
 
 export default async function HomePage() {
@@ -185,8 +178,8 @@ export default async function HomePage() {
             </div>
             <div className="flex flex-col justify-end lg:items-end">
               <p className="max-w-xs text-[14px] leading-relaxed text-primary/40 lg:text-right">
-                Curated collections of the world&apos;s finest instruments. From rare
-                vintage specimens to modern studio tools.
+                Browse by instrument, then compare condition, specifications,
+                included accessories, and the seller&apos;s description.
               </p>
               <Link
                 href="/listings"
@@ -303,140 +296,79 @@ export default async function HomePage() {
         <FeaturedCarousel listings={listings} />
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          AGENT DASHBOARD — light bg, split layout
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#f8f7f5] px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-16 lg:grid-cols-2">
-            {/* Left — heading + features */}
-            <div>
-              <p className="text-[12px] font-medium tracking-[0.35em] text-primary/40 uppercase">
-                Platform
-              </p>
-              <h2 className="mt-4">
-                <span className="block text-[clamp(2.5rem,6vw,4rem)] font-light leading-[1] tracking-tight text-primary">
-                  The Agent
-                </span>
-                <span className="block font-serif text-[clamp(2.5rem,6vw,4rem)] font-light italic leading-[1] tracking-tight text-primary">
-                  Dashboard
-                </span>
-              </h2>
-
-              <div className="mt-12 space-y-8">
-                {AGENT_FEATURES.map(({ title, desc }) => (
-                  <div key={title} className="border-l-2 border-primary/10 pl-6">
-                    <h3 className="text-[16px] font-semibold text-primary">{title}</h3>
-                    <p className="mt-1 text-[14px] text-primary/40">{desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/register"
-                className="mt-12 inline-flex items-center gap-2 rounded-sm border border-primary/20 px-8 py-3.5 text-[12px] font-semibold tracking-[0.2em] text-primary uppercase transition-colors hover:border-primary/40 hover:bg-primary/5"
-              >
-                Become an Agent
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
+      <section id="selling-guide" className="bg-[#f8f7f5] px-6 py-24">
+        <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-primary/60">Selling guide</p>
+            <h2 className="mt-4 font-serif text-4xl text-primary">How to prepare a musical instrument listing</h2>
+            <div className="mt-10 space-y-8">
+              {AGENT_FEATURES.map(({ title, desc }) => (
+                <div key={title} className="border-l-2 border-primary/20 pl-6">
+                  <h3 className="font-semibold text-primary">{title}</h3>
+                  <p className="mt-2 leading-relaxed text-primary/75">{desc}</p>
+                </div>
+              ))}
             </div>
-
-            {/* Right — stats + quote */}
-            <div className="flex flex-col justify-center">
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <p className="text-[11px] font-medium tracking-[0.3em] text-primary/30 uppercase">
-                    Active Agents
-                  </p>
-                  <p className="mt-2 text-[clamp(2.5rem,5vw,3.5rem)] font-light tracking-tight text-primary">
-                    15k+
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-medium tracking-[0.3em] text-primary/30 uppercase">
-                    Quarterly Volume
-                  </p>
-                  <p className="mt-2 text-[clamp(2.5rem,5vw,3.5rem)] font-light tracking-tight text-primary">
-                    $24M
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-12 border-t border-primary/10 pt-8">
-                <blockquote className="text-[15px] leading-relaxed text-primary/60">
-                  &ldquo;We provide the infrastructure for professional agents to reach a
-                  global audience. From hardware consignment to digital license
-                  transfers.&rdquo;
-                </blockquote>
-                <div className="mt-6 flex items-center gap-2 text-[13px] text-primary/30">
-                  <CheckCircle2 className="h-4 w-4" />
-                  Verified agent network — trusted since 2024
-                </div>
-              </div>
-            </div>
+            <Link href="/register" className="mt-10 inline-flex items-center gap-2 border border-primary/30 px-6 py-3 text-primary">
+              Create an account <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="space-y-5 leading-relaxed text-primary/80">
+            <h3 className="font-serif text-2xl text-primary">From vague to useful</h3>
+            <p>Instead of “great guitar, plays well,” describe details you can show:
+              the exact model, finish, pickup configuration, visible fret wear,
+              changed parts, and whether a case is included. State when a date or
+              specification is unknown. Precise descriptions help buyers decide
+              which questions to ask next.</p>
+            <p>For an amplifier, list the tested channels and controls, available
+              service history, and supplied speaker or cabinet. For a pedal, note
+              whether the box and correct power supply are included. Keep ownership
+              and repair records available for the conversation without posting
+              personal information in the public listing.</p>
+            <p>Price the actual item and its condition. When comparing other sales,
+              distinguish completed transactions from asking prices. Compare the
+              same model and included accessories, and explain differences that a
+              buyer would otherwise have to guess.</p>
+            <p>Before publishing, read the listing on a phone and check the photo
+              order. Lead with a clear view of the actual item. Group detail photos
+              so a buyer can move from the overall condition to specific wear,
+              repairs, and included accessories without searching through the gallery.</p>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          TRADE SOFTWARE & PLUGINS — dark bg
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#1a1a22] px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-16 lg:grid-cols-2">
-            {/* Left — copy */}
-            <div>
-              <p className="text-[12px] font-medium tracking-[0.35em] text-white/30 uppercase">
-                Digital
-              </p>
-              <h2 className="mt-4">
-                <span className="block text-[clamp(2.5rem,6vw,4rem)] font-light leading-[1] tracking-tight text-white">
-                  Trade Software
-                </span>
-                <span className="block font-serif text-[clamp(2.5rem,6vw,4rem)] font-light italic leading-[1] tracking-tight text-white/50">
-                  &amp; Plugins
-                </span>
-              </h2>
-
-              <p className="mt-8 max-w-md text-[14px] leading-relaxed text-white/35">
-                Never worry about license transfers again. Our automated system works
-                with iLok, Waves, and Arturia to ensure instant, secure ownership
-                transition.
-              </p>
-
-              <div className="mt-8 space-y-4">
-                {['Instant License Delivery', 'Verified Developer Partnerships', '24/7 Support for Transfer Issues'].map(
-                  (item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-white/20" />
-                      <span className="text-[14px] text-white/40">{item}</span>
-                    </div>
-                  ),
-                )}
+      <section id="buying-guide" className="bg-[#1a1a22] px-6 py-24">
+        <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+          <div className="space-y-6 leading-relaxed text-white/80">
+            <p className="text-xs uppercase tracking-widest text-white/60">Buying guide</p>
+            <h2 className="font-serif text-4xl text-white">Know the gear before the handoff</h2>
+            <p>Match the listing to your setup before making an offer. Ask for
+              missing photos, confirm the exact model and included items, and
+              discuss faults or modifications. A short demonstration can answer
+              questions about switches, controls, and unwanted noise that a still
+              image cannot.</p>
+            <p>For collection, agree a place and enough time to inspect the item.
+              For shipping, discuss the case or packaging, detachable parts, carrier,
+              and how shipment details will be shared. Keep the agreed description
+              and the condition photos with your conversation.</p>
+            <p>Before arranging payment, confirm the method and any protection
+              offered by the provider you will actually use. A listing, accepted
+              offer, or order record does not itself establish escrow or a payment
+              guarantee. If software is included with hardware, check the
+              publisher&apos;s transfer rules directly; an installed copy does not
+              establish a transferable license.</p>
+            <Link href="/listings" className="inline-flex items-center gap-2 border border-white/30 px-6 py-3 text-white">
+              Browse instruments <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {GEAR_CHECKS.map(({ icon: Icon, name, desc }) => (
+              <div key={name} className="border border-white/15 p-6">
+                <Icon className="h-5 w-5 text-white/60" />
+                <h3 className="mt-4 font-semibold text-white">{name}</h3>
+                <p className="mt-3 leading-relaxed text-white/75">{desc}</p>
               </div>
-
-              <Link
-                href="/listings"
-                className="mt-12 inline-flex items-center gap-2 rounded-sm bg-[#0f0f14] px-8 py-3.5 text-[12px] font-semibold tracking-[0.2em] text-white/60 uppercase transition-colors hover:text-white"
-              >
-                Browse Software
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-
-            {/* Right — 2x2 grid of software types */}
-            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-white/10">
-              {SOFTWARE_TYPES.map(({ icon: Icon, name, desc }) => (
-                <div
-                  key={name}
-                  className="border-b border-r border-white/10 p-8 last:border-b-0 [&:nth-child(2)]:border-r-0 [&:nth-child(4)]:border-r-0"
-                >
-                  <Icon className="h-5 w-5 text-white/20" />
-                  <h3 className="mt-4 text-[16px] font-semibold text-white/80">{name}</h3>
-                  <p className="mt-1 text-[13px] text-white/30">{desc}</p>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -515,7 +447,7 @@ export default async function HomePage() {
           {/* Bottom bar */}
           <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-primary/10 pt-6 sm:flex-row">
             <p className="text-[11px] tracking-[0.15em] text-primary/25 uppercase">
-              &copy; 2024 SuedeMarket Inc. All rights reserved.
+              &copy; 2026 Suede AI. All rights reserved.
             </p>
             <p className="text-[11px] tracking-[0.1em] text-primary/40">
               Built by{" "}
