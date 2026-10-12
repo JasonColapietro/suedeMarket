@@ -1,4 +1,9 @@
 {
+  "git": {
+    "deploymentEnabled": {
+      "codex/market-public-api-repair": false
+    }
+  },
   "rewrites": [
     {
       "source": "/ai-instructions",
