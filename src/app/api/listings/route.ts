@@ -2,9 +2,9 @@ import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 import { searchListings, createListing } from '@/lib/services/listings.service'
 import type { ListingCondition, SearchListingsParams } from '@/lib/types'
+import { catalogUnavailable } from '@/lib/catalog-errors'
 
 export async function GET(request: Request) {
-  const supabase = await createClient()
   const { searchParams } = new URL(request.url)
 
   const params: SearchListingsParams = {
@@ -27,10 +27,11 @@ export async function GET(request: Request) {
   }
 
   try {
+    const supabase = await createClient()
     const result = await searchListings(supabase, params)
     return NextResponse.json(result)
-  } catch {
-    return NextResponse.json({ error: 'Failed to fetch listings' }, { status: 500 })
+  } catch (error) {
+    return catalogUnavailable('listings', error)
   }
 }
 

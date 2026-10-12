@@ -14,6 +14,8 @@ import {
 import { createClient } from '@/lib/supabase/server'
 import { searchListings } from '@/lib/services/listings.service'
 import { FeaturedCarousel } from '@/components/home/FeaturedCarousel'
+import { CatalogUnavailable } from '@/components/listings/CatalogUnavailable'
+import { reportCatalogError } from '@/lib/catalog-errors'
 import type { Listing } from '@/lib/types'
 import { createPublicPageMetadata, homeJsonLd, jsonLdScript } from '@/lib/seo'
 
@@ -81,11 +83,13 @@ const FOOTER_RESOURCES = [
 
 export default async function HomePage() {
   let listings: Listing[] = []
+  let listingsUnavailable = false
   try {
     const supabase = await createClient()
     ;({ listings } = await searchListings(supabase, { limit: 5, sort: 'newest' }))
   } catch (error) {
-    console.error('[home] failed to load featured listings', error)
+    listingsUnavailable = true
+    reportCatalogError('listings', error)
   }
 
   return (
@@ -295,7 +299,13 @@ export default async function HomePage() {
         </div>
 
         {/* Full-bleed featured image */}
-        <FeaturedCarousel listings={listings} />
+        {listingsUnavailable ? (
+          <div className="mx-auto mt-8 max-w-7xl px-6">
+            <CatalogUnavailable />
+          </div>
+        ) : (
+          <FeaturedCarousel listings={listings} />
+        )}
       </section>
 
       <section id="selling-guide" className="bg-[#f8f7f5] px-6 py-24">

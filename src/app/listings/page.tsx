@@ -3,6 +3,8 @@ import { searchListings, getCategories } from '@/lib/services/listings.service'
 import { ListingCard } from '@/components/listings/ListingCard'
 import { SearchBar } from '@/components/listings/SearchBar'
 import { CategoryFilter } from '@/components/listings/CategoryFilter'
+import { CatalogUnavailable } from '@/components/listings/CatalogUnavailable'
+import { reportCatalogError } from '@/lib/catalog-errors'
 import { CONDITION_LABELS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
@@ -22,7 +24,6 @@ export default async function ListingsPage({
   searchParams: Promise<Record<string, string | undefined>>
 }) {
   const params = await searchParams
-  const supabase = await createClient()
 
   const searchArgs: SearchListingsParams = {
     q: params.q,
@@ -38,14 +39,36 @@ export default async function ListingsPage({
   let listings: Listing[] = []
   let count = 0
   let categories: Awaited<ReturnType<typeof getCategories>> = []
+  let listingsUnavailable = false
+  let categoriesUnavailable = false
   try {
-    ;[{ listings, count }, categories] = await Promise.all([
+    const supabase = await createClient()
+    const [listingResult, categoryResult] = await Promise.allSettled([
       searchListings(supabase, searchArgs),
       getCategories(supabase),
     ])
+    if (listingResult.status === 'fulfilled') {
+      ;({ listings, count } = listingResult.value)
+    } else {
+      listingsUnavailable = true
+      reportCatalogError('listings', listingResult.reason)
+    }
+    if (categoryResult.status === 'fulfilled') {
+      categories = categoryResult.value
+    } else {
+      categoriesUnavailable = true
+      reportCatalogError('categories', categoryResult.reason)
+    }
   } catch (error) {
-    console.error('[listings] failed to load listings', error)
+    listingsUnavailable = true
+    categoriesUnavailable = true
+    reportCatalogError('listings', error)
   }
+
+  const retryParams = new URLSearchParams(
+    Object.entries(params).filter(([, value]) => value !== undefined) as [string, string][],
+  ).toString()
+  const retryHref = retryParams ? `/listings?${retryParams}` : '/listings'
 
   const currentSort = searchArgs.sort ?? 'newest'
   const activeCondition = params.condition
@@ -141,9 +164,14 @@ export default async function ListingsPage({
               <Link href="/#buying-guide" className="underline underline-offset-4">buying checklist</Link>{' '}
               explains what to check for guitars, amplifiers, pedals, and studio gear.
             </p>
+            {categoriesUnavailable && !listingsUnavailable && (
+              <div className="mb-6">
+                <CatalogUnavailable categoriesOnly retryHref={retryHref} />
+              </div>
+            )}
             <div className="mb-5 flex items-center justify-between">
               <p className="text-sm text-white/40">
-                {count} {count === 1 ? 'listing' : 'listings'}
+                {listingsUnavailable ? 'Listings unavailable' : `${count} ${count === 1 ? 'listing' : 'listings'}`}
               </p>
               <div className="flex gap-1 text-sm">
                 {[
@@ -167,7 +195,9 @@ export default async function ListingsPage({
               </div>
             </div>
 
-            {listings.length > 0 ? (
+            {listingsUnavailable ? (
+              <CatalogUnavailable retryHref={retryHref} />
+            ) : listings.length > 0 ? (
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-4">
                 {listings.map((listing) => (
                   <ListingCard key={listing.id} listing={listing} />
