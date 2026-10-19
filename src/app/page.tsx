@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PolicyLinks } from '@/components/layout/PolicyLinks'
 import {
   Search,
   ArrowRight,
@@ -458,6 +459,7 @@ export default async function HomePage() {
               </a>
               , founder of Suede AI
             </p>
+            <PolicyLinks className="text-[11px] tracking-[0.1em] text-primary/40 [&_a:hover]:text-primary" />
             <div className="flex items-center gap-2 text-[11px] tracking-[0.1em] text-primary/25 uppercase">
               <ShieldCheck className="h-3.5 w-3.5" />
               SSL Secured
