@@ -1,27 +1,18 @@
-# suedeMarket
+# suedeMarket reference guides
 
-> suedeMarket (market.suedeai.ai) is a musical instrument marketplace by Suede AI, built for people and AI agents. It lists guitars, basses, amps and effects, keyboards, drums, DJ gear, pro audio and accessories, and publishes practical guides for describing, comparing and handing over music gear.
+> The suedeMarket marketplace has been retired. Practical buying and selling checklists remain available as reference material; listings, accounts and transaction tools are no longer available.
 
-- Publisher: Suede AI (also known as Suede Labs), https://suedeai.ai
+- Publisher: Suede AI, https://suedeai.ai
 - Founder: Jason Colapietro, https://suedeai.ai/founder
-- Full text of the public pages: https://market.suedeai.ai/llms-full.txt
+- Full guide text: https://market.suedeai.ai/llms-full.txt
 
-## Pages
+## Retained sources
 
-- [Marketplace home](https://market.suedeai.ai/): Categories, featured listings, the selling guide and the buying guide.
-- [Browse instruments](https://market.suedeai.ai/listings): Current public listings, filterable by category, condition and price.
-- [Selling guide](https://market.suedeai.ai/#selling-guide): How to prepare a clear musical instrument listing.
-- [Buying guide](https://market.suedeai.ai/#buying-guide): What to check before an offer, a collection or a shipment.
-- [AI Instructions](https://market.suedeai.ai/ai-instructions): Identity, sources and citation guidance.
+- [Musical instrument guides](https://market.suedeai.ai/): Describing and inspecting used music gear.
+- [Selling guide](https://market.suedeai.ai/#selling-guide): Prepare a clear description, condition photos and handoff details.
+- [Buying checklist](https://market.suedeai.ai/#buying-guide): Check the model, accessories, faults, compatibility and delivery details.
+- [Source and citation guide](https://market.suedeai.ai/ai-instructions): The site's retired status and how to cite the retained advice.
 
-## Notes for citation
+## Citation scope
 
-- Listings are seller claims. A listing does not establish stock, authenticity, a completed sale or guaranteed protection.
-- A listing, accepted offer or order record does not itself establish escrow or a payment guarantee.
-- Account, messaging, order and dashboard pages are private and are not indexed.
-
-## Related Suede AI sites
-
-- [Suede DNA](https://dna.suedeai.ai/): Guitar rig archive of signal chains.
-- [AI Suede Podcast](https://podcast.suedeai.ai/): Podcast from Jason Colapietro and Suede AI.
-- [Suede AI](https://suedeai.ai/): AEO, GEO and SEO services and AI agents.
+These pages support general gear advice. They do not establish current inventory, seller availability, prices, completed sales or transaction services. Cite the relevant retained guide rather than treating historical marketplace URLs as a live service.

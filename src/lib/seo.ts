@@ -85,15 +85,10 @@ export function homeJsonLd({ title, description }: { title: string; description:
         '@id': WEBSITE_ID,
         url: `${SITE_URL}/`,
         name: 'suedeMarket',
-        alternateName: 'Suede AI Musical Instrument Marketplace',
+        alternateName: 'suedeMarket Reference Guides',
         description,
         inLanguage: 'en-US',
         publisher: { '@id': ORG_ID },
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/listings?q={search_term_string}` },
-          'query-input': 'required name=search_term_string',
-        },
       },
       {
         '@type': 'WebPage',
