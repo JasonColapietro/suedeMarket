@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PolicyLinks } from '@/components/layout/PolicyLinks'
 import { Zap, Music, Monitor, Pen } from 'lucide-react'
 import { createPublicPageMetadata, homeJsonLd, jsonLdScript } from '@/lib/seo'
 
@@ -125,6 +126,7 @@ export default function HomePage() {
           <p>Published by <a href="https://suedeai.ai" className="underline underline-offset-4">Suede AI</a>,
             founded by <a href="https://suedeai.ai/founder" className="underline underline-offset-4">Jason Colapietro</a>.</p>
           <Link href="/ai-instructions" className="underline underline-offset-4">Source and citation guide</Link>
+          <PolicyLinks className="[&_a]:underline [&_a]:underline-offset-4" />
         </div>
       </footer>
     </main>

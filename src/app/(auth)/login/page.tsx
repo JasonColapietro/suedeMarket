@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
+import { PolicyLinks } from '@/components/layout/PolicyLinks'
 import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
@@ -88,6 +89,8 @@ export default function LoginPage() {
             Register
           </Link>
         </p>
+
+        <PolicyLinks className="text-xs text-white/50 [&_a:hover]:text-white" />
       </div>
     </div>
   )
