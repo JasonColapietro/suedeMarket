@@ -50,10 +50,14 @@ export function createPublicPageMetadata({
  * search engines merge it with the canonical node rather than a rival copy.
  */
 const organizationNode = {
+  "parentOrganization": {"@type":"Organization","@id":"https://jcinvestmentgroup.ventures/#organization","name":"JC Investment Group LLC","url":"https://jcinvestmentgroup.ventures/"},
+  "address": {"@type":"PostalAddress","streetAddress":"138 Victorian Lane","addressLocality":"Jupiter","addressRegion":"FL","postalCode":"33458","addressCountry":"US"},
+  "hasMerchantReturnPolicy": {"@type":"MerchantReturnPolicy","@id":"https://suedeai.ai/terms#money-back-policy","name":"90-day money-back policy","returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","merchantReturnDays":90,"returnFees":"https://schema.org/FreeReturn","refundType":"https://schema.org/FullRefund","merchantReturnLink":"https://suedeai.ai/terms#money-back-policy"},
+
   '@type': 'Organization',
   '@id': ORG_ID,
   name: 'Suede AI',
-  alternateName: ['Suede Labs', 'Suede Labs AI'],
+  alternateName: ["Suede Labs AI","Suede Labs","Suede"],
   url: 'https://suedeai.ai',
   foundingDate: '2024',
   founder: { '@id': FOUNDER_ID },
