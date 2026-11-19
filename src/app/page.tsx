@@ -23,6 +23,12 @@ const GEAR_CHECKS = [
   { icon: Pen, name: 'Keys & drums', desc: 'Check every key, pad, pedal, trigger, stand, and the pieces included in the pictured setup.' },
 ]
 
+const RELATED_LINKS = [
+  { label: 'Guitar rig archive of signal chains', href: 'https://dna.suedeai.ai/' },
+  { label: 'Guitar forum for gear, pedalboards and tone', href: 'https://suede.social/' },
+  { label: 'Guitar lessons and practice tools', href: 'https://guitarhub.org/' },
+]
+
 export default function HomePage() {
   return (
     <main>
@@ -118,6 +124,19 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="related-heading" className="bg-[#f8f7f5] px-6 pt-16">
+        <div className="mx-auto max-w-7xl border-b border-primary/15 pb-12">
+          <h2 id="related-heading" className="text-xs uppercase tracking-widest text-primary/60">Related from Suede</h2>
+          <ul className="mt-5 flex flex-wrap gap-x-8 gap-y-3 text-primary/80">
+            {RELATED_LINKS.map(({ label, href }) => (
+              <li key={href}>
+                <a href={href} className="underline underline-offset-4">{label}</a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
