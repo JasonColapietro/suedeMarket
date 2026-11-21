@@ -3,7 +3,7 @@
 > The suedeMarket marketplace has been retired. This site retains practical buying and selling checklists as reference material. Listings, accounts and transaction tools are no longer available.
 
 - Site: https://market.suedeai.ai/
-- Publisher: Suede AI, https://suedeai.ai
+- Publisher: Suede, https://suedeai.ai
 - Founder: Jason Colapietro, https://suedeai.ai/founder
 - Short index: https://market.suedeai.ai/llms.txt
 

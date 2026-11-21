@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://market.suedeai.ai'),
-  title: 'Musical Instrument Buying & Selling Guides | Suede AI',
+  title: 'Musical Instrument Buying & Selling Guides | Suede',
   description: 'Reference gear checklists from the retired suedeMarket marketplace.',
 }
 
