@@ -6,7 +6,7 @@ import { test } from 'node:test'
 // The company is "Suede" (owner direction, 2026-11-21). "Suede AI" and
 // "Suede Labs" survive only as schema alternateName entries and one
 // "formerly known as" alias line per discovery file.
-const OLD_NAME = /suede[ _]?ai\b(?![.\-/])|suede[ -]?labs\b(?![.\-/])/i
+const OLD_NAME = [/\bsuede[ \t]+(ai|labs)\b/i, /\bSuede(AI|Labs)\b(?![.\-/@])/]
 const ALIAS_SPOTS = [
   /["']?alternateName["']?\s*:\s*\[[^\]]*\]/g,
   /^.*formerly known as Suede AI.*$/gim,
@@ -25,7 +25,7 @@ test('public copy names the company Suede, not Suede AI or Suede Labs', () => {
   for (const file of [...files('src'), ...files('public')]) {
     readFileSync(file, 'utf8').split('\n').forEach((line, i) => {
       const stripped = ALIAS_SPOTS.reduce((text, pattern) => text.replace(pattern, ''), line)
-      if (OLD_NAME.test(stripped)) hits.push(`${file}:${i + 1}: ${line.trim().slice(0, 120)}`)
+      if (OLD_NAME.some((re) => re.test(stripped))) hits.push(`${file}:${i + 1}: ${line.trim().slice(0, 120)}`)
     })
   }
   assert.deepEqual(hits, [])
