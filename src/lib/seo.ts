@@ -46,7 +46,7 @@ export function createPublicPageMetadata({
 }
 
 /**
- * The shared Suede AI Organization, stated the same way as on suedeai.ai so
+ * The shared Suede Organization, stated the same way as on suedeai.ai so
  * search engines merge it with the canonical node rather than a rival copy.
  */
 const organizationNode = {
@@ -56,8 +56,8 @@ const organizationNode = {
 
   '@type': 'Organization',
   '@id': ORG_ID,
-  name: 'Suede AI',
-  alternateName: ["Suede Labs AI","Suede Labs","Suede"],
+  name: 'Suede',
+  alternateName: ["Suede AI","Suede Labs","Suede Labs AI"],
   url: 'https://suedeai.ai',
   foundingDate: '2024',
   founder: { '@id': FOUNDER_ID },

@@ -2,7 +2,8 @@
 
 > The suedeMarket marketplace has been retired. Practical buying and selling checklists remain available as reference material; listings, accounts and transaction tools are no longer available.
 
-- Publisher: Suede AI, https://suedeai.ai
+- Publisher: Suede, https://suedeai.ai
+- Suede was formerly known as Suede AI and Suede Labs.
 - Founder: Jason Colapietro, https://suedeai.ai/founder
 - Full guide text: https://market.suedeai.ai/llms-full.txt
 

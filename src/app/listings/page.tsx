@@ -10,8 +10,8 @@ import type { Listing, ListingCondition, SearchListingsParams } from '@/lib/type
 import { collectionJsonLd, createPublicPageMetadata, jsonLdScript } from '@/lib/seo'
 
 const PAGE = {
-  title: 'Browse Musical Instruments & Music Gear | Suede AI',
-  description: 'Browse musical instruments on suedeMarket by Suede AI. Filter by category, condition and price, then compare model details, accessories and seller notes.',
+  title: 'Browse Musical Instruments & Music Gear | Suede',
+  description: 'Browse musical instruments on suedeMarket by Suede. Filter by category, condition and price, then compare model details, accessories and seller notes.',
 }
 
 export const metadata = createPublicPageMetadata({ path: '/listings', ...PAGE })

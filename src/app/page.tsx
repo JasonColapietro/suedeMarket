@@ -4,7 +4,7 @@ import { Zap, Music, Monitor, Pen } from 'lucide-react'
 import { createPublicPageMetadata, homeJsonLd, jsonLdScript } from '@/lib/seo'
 
 const PAGE = {
-  title: 'Musical Instrument Buying & Selling Guides | Suede AI',
+  title: 'Musical Instrument Buying & Selling Guides | Suede',
   description: 'Practical checklists for describing and inspecting used guitars, amps, pedals and studio gear. Reference guides from the retired suedeMarket marketplace.',
 }
 
@@ -142,7 +142,7 @@ export default function HomePage() {
 
       <footer className="bg-[#f8f7f5] px-6 py-12">
         <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-6 text-sm text-primary/75">
-          <p>Published by <a href="https://suedeai.ai" className="underline underline-offset-4">Suede AI</a>,
+          <p>Published by <a href="https://suedeai.ai" className="underline underline-offset-4">Suede</a>,
             founded by <a href="https://suedeai.ai/founder" className="underline underline-offset-4">Jason Colapietro</a>.</p>
           <Link href="/ai-instructions" className="underline underline-offset-4">Source and citation guide</Link>
           <PolicyLinks className="[&_a]:underline [&_a]:underline-offset-4" />
